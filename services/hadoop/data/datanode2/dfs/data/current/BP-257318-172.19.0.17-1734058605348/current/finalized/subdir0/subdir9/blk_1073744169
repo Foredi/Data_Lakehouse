@@ -1,0 +1,117 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "72d4e956-ca65-494d-af1d-f9ae473a92bc",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/lecturer/*.snappy.parquet",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1734173131064,
+  "last-column-id" : 10,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "lecturer_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 2,
+      "name" : "employee_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 3,
+      "name" : "academic_title",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "academic_title_date",
+      "required" : false,
+      "type" : "timestamptz"
+    }, {
+      "id" : 5,
+      "name" : "degree",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 6,
+      "name" : "degree_issue_date",
+      "required" : false,
+      "type" : "timestamptz"
+    }, {
+      "id" : 7,
+      "name" : "degree_issue_place",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 8,
+      "name" : "major",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 9,
+      "name" : "department",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 10,
+      "name" : "number_of_exp",
+      "required" : false,
+      "type" : "long"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 341343842216740744,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 341343842216740744,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 341343842216740744,
+    "timestamp-ms" : 1734173131064,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214103952-0000",
+      "added-data-files" : "1",
+      "added-records" : "168",
+      "added-files-size" : "7334",
+      "changed-partition-count" : "1",
+      "total-records" : "168",
+      "total-files-size" : "7334",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/lecturer/*.snappy.parquet/metadata/snap-341343842216740744-1-4257384c-4803-46fd-ae86-e763189955d4.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1734173131064,
+    "snapshot-id" : 341343842216740744
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1734173096270,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/lecturer/*.snappy.parquet/metadata/00000-7f874533-d7b3-49f8-aaea-c5e26ffba2d2.metadata.json"
+  } ]
+}

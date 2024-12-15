@@ -1,0 +1,20 @@
+[2024-12-14T11:12:22.071+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-14T11:12:22.281+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: migration_fit_schema.create_table.create_table manual__2024-12-14T11:12:20.987198+00:00 [queued]>
+[2024-12-14T11:12:22.289+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: migration_fit_schema.create_table.create_table manual__2024-12-14T11:12:20.987198+00:00 [queued]>
+[2024-12-14T11:12:22.289+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-14T11:12:22.300+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): create_table.create_table> on 2024-12-14 11:12:20.987198+00:00
+[2024-12-14T11:12:22.307+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=114) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-14T11:12:22.308+0000] {standard_task_runner.py:63} INFO - Started process 116 to run task
+[2024-12-14T11:12:22.310+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'migration_fit_schema', 'create_table.create_table', 'manual__2024-12-14T11:12:20.987198+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/etl_migrate.py', '--cfg-path', '/tmp/tmp3drhyemx']
+[2024-12-14T11:12:22.314+0000] {standard_task_runner.py:91} INFO - Job 6: Subtask create_table.create_table
+[2024-12-14T11:12:22.387+0000] {task_command.py:426} INFO - Running <TaskInstance: migration_fit_schema.create_table.create_table manual__2024-12-14T11:12:20.987198+00:00 [running]> on host 472b63b715e1
+[2024-12-14T11:12:22.498+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='migration_fit_schema' AIRFLOW_CTX_TASK_ID='create_table.create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-12-14T11:12:20.987198+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-14T11:12:20.987198+00:00'
+[2024-12-14T11:12:22.500+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-14T11:12:23.244+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-14T11:12:23.245+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-14T11:12:23.267+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=migration_fit_schema, task_id=create_table.create_table, run_id=manual__2024-12-14T11:12:20.987198+00:00, execution_date=20241214T111220, start_date=20241214T111222, end_date=20241214T111223
+[2024-12-14T11:12:23.289+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-14T11:12:23.317+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-12-14T11:12:23.318+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

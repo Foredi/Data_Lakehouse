@@ -1,0 +1,86 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "2f521e92-0f75-41a2-9098-8671a9045d75",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/lecturer/*.snappy.parquet",
+  "last-sequence-number" : 0,
+  "last-updated-ms" : 1734195722734,
+  "last-column-id" : 10,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "lecturer_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 2,
+      "name" : "employee_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 3,
+      "name" : "academic_title",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "academic_title_date",
+      "required" : false,
+      "type" : "timestamptz"
+    }, {
+      "id" : 5,
+      "name" : "degree",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 6,
+      "name" : "degree_issue_date",
+      "required" : false,
+      "type" : "timestamptz"
+    }, {
+      "id" : 7,
+      "name" : "degree_issue_place",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 8,
+      "name" : "major",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 9,
+      "name" : "department",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 10,
+      "name" : "number_of_exp",
+      "required" : false,
+      "type" : "long"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : -1,
+  "refs" : { },
+  "snapshots" : [ ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ ],
+  "metadata-log" : [ ]
+}

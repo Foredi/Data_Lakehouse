@@ -1,0 +1,91 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "48b5ce0d-5719-4cb7-adef-f7d2f76df88d",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/score_detail/*.snappy.parquet",
+  "last-sequence-number" : 0,
+  "last-updated-ms" : 1734194152037,
+  "last-column-id" : 11,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "score_detail_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 2,
+      "name" : "score_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 3,
+      "name" : "regular_score_1",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 4,
+      "name" : "regular_score_2",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 5,
+      "name" : "regular_score_3",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 6,
+      "name" : "mid_term_score",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 7,
+      "name" : "final_term_score",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 8,
+      "name" : "practice_score_1",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 9,
+      "name" : "practice_score_2",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 10,
+      "name" : "practice_score_3",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 11,
+      "name" : "last_modified_date",
+      "required" : false,
+      "type" : "timestamptz"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : -1,
+  "refs" : { },
+  "snapshots" : [ ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ ],
+  "metadata-log" : [ ]
+}

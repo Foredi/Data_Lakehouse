@@ -1,0 +1,30 @@
+[2024-12-13T20:35:38.102+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-13T20:35:38.263+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: migration_fit_data.load_staging.create_staging_employee manual__2024-12-13T20:35:11.487363+00:00 [queued]>
+[2024-12-13T20:35:38.316+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: migration_fit_data.load_staging.create_staging_employee manual__2024-12-13T20:35:11.487363+00:00 [queued]>
+[2024-12-13T20:35:38.317+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-13T20:35:38.459+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_staging.create_staging_employee> on 2024-12-13 20:35:11.487363+00:00
+[2024-12-13T20:35:38.501+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=5854) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-13T20:35:38.516+0000] {standard_task_runner.py:63} INFO - Started process 5893 to run task
+[2024-12-13T20:35:38.514+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'migration_fit_data', 'load_staging.create_staging_employee', 'manual__2024-12-13T20:35:11.487363+00:00', '--job-id', '663', '--raw', '--subdir', 'DAGS_FOLDER/elt_migrate.py', '--cfg-path', '/tmp/tmpgg_sp71_']
+[2024-12-13T20:35:38.526+0000] {standard_task_runner.py:91} INFO - Job 663: Subtask load_staging.create_staging_employee
+[2024-12-13T20:35:38.707+0000] {task_command.py:426} INFO - Running <TaskInstance: migration_fit_data.load_staging.create_staging_employee manual__2024-12-13T20:35:11.487363+00:00 [running]> on host 1fe973f28a1c
+[2024-12-13T20:35:38.868+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='migration_fit_data' AIRFLOW_CTX_TASK_ID='load_staging.create_staging_employee' AIRFLOW_CTX_EXECUTION_DATE='2024-12-13T20:35:11.487363+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-13T20:35:11.487363+00:00'
+[2024-12-13T20:35:38.871+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-13T20:35:38.881+0000] {hive.py:475} INFO - USE `default`
+[2024-12-13T20:35:38.948+0000] {hive.py:475} INFO - DROP TABLE IF EXISTS default.employee
+[2024-12-13T20:35:39.468+0000] {hive.py:475} INFO - 
+        CREATE TABLE IF NOT EXISTS default.employee (
+            employee_id BIGINT,employee_name STRING,day_of_birth TIMESTAMP,nationality STRING,insurance_id STRING   
+        )   
+        STORED AS PARQUET
+        LOCATION '/fit_warehouse/raw/employee/*.snappy.parquet'
+    
+[2024-12-13T20:35:39.788+0000] {hive.py:475} INFO - ANALYZE TABLE default.employee COMPUTE STATISTICS
+[2024-12-13T20:35:40.486+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-13T20:35:40.489+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-13T20:35:40.531+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=migration_fit_data, task_id=load_staging.create_staging_employee, run_id=manual__2024-12-13T20:35:11.487363+00:00, execution_date=20241213T203511, start_date=20241213T203538, end_date=20241213T203540
+[2024-12-13T20:35:40.573+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-13T20:35:40.664+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-13T20:35:40.665+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

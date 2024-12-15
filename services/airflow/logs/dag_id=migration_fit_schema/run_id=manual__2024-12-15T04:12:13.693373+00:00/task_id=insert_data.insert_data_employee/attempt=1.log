@@ -1,0 +1,46 @@
+[2024-12-15T04:12:20.086+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-15T04:12:20.284+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: migration_fit_schema.insert_data.insert_data_employee manual__2024-12-15T04:12:13.693373+00:00 [queued]>
+[2024-12-15T04:12:20.293+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: migration_fit_schema.insert_data.insert_data_employee manual__2024-12-15T04:12:13.693373+00:00 [queued]>
+[2024-12-15T04:12:20.293+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-15T04:12:20.305+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): insert_data.insert_data_employee> on 2024-12-15 04:12:13.693373+00:00
+[2024-12-15T04:12:20.313+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=150) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-15T04:12:20.315+0000] {standard_task_runner.py:63} INFO - Started process 152 to run task
+[2024-12-15T04:12:20.316+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'migration_fit_schema', 'insert_data.insert_data_employee', 'manual__2024-12-15T04:12:13.693373+00:00', '--job-id', '429', '--raw', '--subdir', 'DAGS_FOLDER/etl_migrate.py', '--cfg-path', '/tmp/tmpd8gj_01w']
+[2024-12-15T04:12:20.319+0000] {standard_task_runner.py:91} INFO - Job 429: Subtask insert_data.insert_data_employee
+[2024-12-15T04:12:20.365+0000] {task_command.py:426} INFO - Running <TaskInstance: migration_fit_schema.insert_data.insert_data_employee manual__2024-12-15T04:12:13.693373+00:00 [running]> on host 2f4e9c743994
+[2024-12-15T04:12:20.460+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='migration_fit_schema' AIRFLOW_CTX_TASK_ID='insert_data.insert_data_employee' AIRFLOW_CTX_EXECUTION_DATE='2024-12-15T04:12:13.693373+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-15T04:12:13.693373+00:00'
+[2024-12-15T04:12:20.462+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-15T04:12:20.468+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-15T04:12:20.469+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/tasks/etl_task.py", line 50, in insert_data
+    conn = psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "postgres" (172.19.0.5), port 5432 failed: FATAL:  password authentication failed for user "hive_metastore"
+
+[2024-12-15T04:12:20.477+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=migration_fit_schema, task_id=insert_data.insert_data_employee, run_id=manual__2024-12-15T04:12:13.693373+00:00, execution_date=20241215T041213, start_date=20241215T041220, end_date=20241215T041220
+[2024-12-15T04:12:20.488+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 429 for task insert_data.insert_data_employee (connection to server at "postgres" (172.19.0.5), port 5432 failed: FATAL:  password authentication failed for user "hive_metastore"
+; 152)
+[2024-12-15T04:12:20.532+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-12-15T04:12:20.562+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-15T04:12:20.566+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

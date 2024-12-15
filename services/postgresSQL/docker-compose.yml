@@ -1,0 +1,45 @@
+services:
+  pgadmin:
+    networks:
+        fit_network:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    restart: unless-stopped
+
+  postgres:
+    networks:
+      fit_network:
+    image: postgres:16
+    container_name: postgres
+    hostname: postgres
+    environment:
+      - POSTGRES_DB=hive_metastore
+      - POSTGRES_USER=hive_metastore
+      - POSTGRES_PASSWORD=hive_metastore
+      - PGDATA=/var/lib/metastore-postgres/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "hive_metastore"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "5434:5432"  # PostgreSQL default port
+    volumes:
+      - ./postgres-data:/var/lib/postgres/data  # Use a named volume for persistent data
+    restart: always
+
+volumes:
+  postgres-data:
+  pgadmin:
+
+networks:
+  fit_network:
+    external: true

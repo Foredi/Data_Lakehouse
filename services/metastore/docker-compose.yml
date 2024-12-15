@@ -1,0 +1,50 @@
+services:
+  metastore-postgres:
+    networks:
+      fit_network:
+    image: postgres:16
+    container_name: metastore-postgres
+    hostname: metastore-postgres
+    environment:
+      - POSTGRES_DB=hive_metastore
+      - POSTGRES_USER=hive_metastore
+      - POSTGRES_PASSWORD=hive_metastore
+      - PGDATA=/var/lib/postgres/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "hive_metastore"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "5433:5432"  # PostgreSQL default port
+    volumes:
+      - ./metastore_postgres:/var/lib/postgres/data
+    restart: always
+
+  metastore:
+    networks:
+      fit_network:
+    user: root
+    image: apache/hive:4.0.0
+    container_name: metastore
+    hostname: metastore
+    depends_on:
+      metastore-postgres:
+        condition: service_healthy
+    ports:
+      - "9083:9083"
+    environment:
+      - SERVICE_NAME=metastore
+      - DB_DRIVER=postgres
+      - IS_RESUME=${RESUME_METASTORE:-true}
+    volumes:
+      - ./config/hive-site.xml:/opt/hive/conf/hive-site.xml
+      - ./jars/postgresql-42.7.3.jar:/opt/hive/lib/postgresql-42.7.3.jar
+    restart: always
+
+volumes:
+  postgres-data:
+
+networks:
+  fit_network:
+    external: true

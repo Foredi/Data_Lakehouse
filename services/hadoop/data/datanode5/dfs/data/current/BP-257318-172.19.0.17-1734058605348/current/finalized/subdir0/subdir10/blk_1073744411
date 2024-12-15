@@ -1,0 +1,134 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "fce4e2f9-a921-4147-a6f0-4f227df3b601",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/course/*.snappy.parquet",
+  "last-sequence-number" : 2,
+  "last-updated-ms" : 1734175579608,
+  "last-column-id" : 8,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "course_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 2,
+      "name" : "course_name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "course_code",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 4,
+      "name" : "category",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "total_credit",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 6,
+      "name" : "theory_credit",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 7,
+      "name" : "practice_credit",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 8,
+      "name" : "self_learning_credit",
+      "required" : false,
+      "type" : "long"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 2602059654521003292,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 2602059654521003292,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 8561905745636421626,
+    "timestamp-ms" : 1734175155964,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "80",
+      "added-files-size" : "4593",
+      "changed-partition-count" : "1",
+      "total-records" : "80",
+      "total-files-size" : "4593",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/course/*.snappy.parquet/metadata/snap-8561905745636421626-1-ba58d905-09c3-494d-9695-f2c2758f6478.avro",
+    "schema-id" : 0
+  }, {
+    "sequence-number" : 2,
+    "snapshot-id" : 2602059654521003292,
+    "parent-snapshot-id" : 8561905745636421626,
+    "timestamp-ms" : 1734175579608,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "170",
+      "added-files-size" : "5465",
+      "changed-partition-count" : "1",
+      "total-records" : "250",
+      "total-files-size" : "10058",
+      "total-data-files" : "2",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/course/*.snappy.parquet/metadata/snap-2602059654521003292-1-b72b12ec-4bed-4938-93e2-101b2b505c14.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1734175155964,
+    "snapshot-id" : 8561905745636421626
+  }, {
+    "timestamp-ms" : 1734175579608,
+    "snapshot-id" : 2602059654521003292
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1734175103191,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/course/*.snappy.parquet/metadata/00000-4feafda3-da1a-4c30-ac33-6bbc19a4d11e.metadata.json"
+  }, {
+    "timestamp-ms" : 1734175155964,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/course/*.snappy.parquet/metadata/00001-2031256b-3901-4e97-969b-92e6a51ed92c.metadata.json"
+  } ]
+}

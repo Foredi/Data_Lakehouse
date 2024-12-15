@@ -1,0 +1,24 @@
+[2024-12-14T10:49:54.098+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-14T10:49:54.170+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_dimention_data.insert_warehouse.insert_dwh_address manual__2024-12-14T10:49:34.305778+00:00 [queued]>
+[2024-12-14T10:49:54.190+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_dimention_data.insert_warehouse.insert_dwh_address manual__2024-12-14T10:49:34.305778+00:00 [queued]>
+[2024-12-14T10:49:54.191+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-14T10:49:54.230+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): insert_warehouse.insert_dwh_address> on 2024-12-14 10:49:34.305778+00:00
+[2024-12-14T10:49:54.246+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=595) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-14T10:49:54.248+0000] {standard_task_runner.py:63} INFO - Started process 615 to run task
+[2024-12-14T10:49:54.245+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_dimention_data', 'insert_warehouse.insert_dwh_address', 'manual__2024-12-14T10:49:34.305778+00:00', '--job-id', '143', '--raw', '--subdir', 'DAGS_FOLDER/elt_dimention.py', '--cfg-path', '/tmp/tmpu0skzw37']
+[2024-12-14T10:49:54.249+0000] {standard_task_runner.py:91} INFO - Job 143: Subtask insert_warehouse.insert_dwh_address
+[2024-12-14T10:49:54.336+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_dimention_data.insert_warehouse.insert_dwh_address manual__2024-12-14T10:49:34.305778+00:00 [running]> on host 06cbf31e97a5
+[2024-12-14T10:49:54.467+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_dimention_data' AIRFLOW_CTX_TASK_ID='insert_warehouse.insert_dwh_address' AIRFLOW_CTX_EXECUTION_DATE='2024-12-14T10:49:34.305778+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-14T10:49:34.305778+00:00'
+[2024-12-14T10:49:54.470+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-14T10:49:54.483+0000] {hive.py:475} INFO - USE `default`
+[2024-12-14T10:49:54.572+0000] {hive.py:475} INFO - SELECT COUNT(*) FROM default.address
+[2024-12-14T10:49:55.836+0000] {logging_mixin.py:188} INFO - SELECT COUNT(*) FROM default.address --- 0
+[2024-12-14T10:49:55.837+0000] {logging_mixin.py:188} INFO - STAGING HAS NO DATA, SKIPPING...
+[2024-12-14T10:49:55.837+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-14T10:49:55.849+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-14T10:49:55.889+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_dimention_data, task_id=insert_warehouse.insert_dwh_address, run_id=manual__2024-12-14T10:49:34.305778+00:00, execution_date=20241214T104934, start_date=20241214T104954, end_date=20241214T104955
+[2024-12-14T10:49:55.974+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-14T10:49:56.043+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-14T10:49:56.050+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,54 @@
+[2024-12-15T04:37:05.438+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-15T04:37:05.463+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_enrollment_fact_data.wait_for_etl_instruction_fact_data manual__2024-12-15T04:27:58.151236+00:00 [queued]>
+[2024-12-15T04:37:05.471+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_enrollment_fact_data.wait_for_etl_instruction_fact_data manual__2024-12-15T04:27:58.151236+00:00 [queued]>
+[2024-12-15T04:37:05.471+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 1
+[2024-12-15T04:37:05.481+0000] {taskinstance.py:2330} INFO - Executing <Task(ExternalTaskSensor): wait_for_etl_instruction_fact_data> on 2024-12-15 04:27:58.151236+00:00
+[2024-12-15T04:37:05.493+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=630) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-15T04:37:05.495+0000] {standard_task_runner.py:63} INFO - Started process 632 to run task
+[2024-12-15T04:37:05.497+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_enrollment_fact_data', 'wait_for_etl_instruction_fact_data', 'manual__2024-12-15T04:27:58.151236+00:00', '--job-id', '490', '--raw', '--subdir', 'DAGS_FOLDER/elt_enrollment_fact.py', '--cfg-path', '/tmp/tmpe4_d2284']
+[2024-12-15T04:37:05.500+0000] {standard_task_runner.py:91} INFO - Job 490: Subtask wait_for_etl_instruction_fact_data
+[2024-12-15T04:37:05.547+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_enrollment_fact_data.wait_for_etl_instruction_fact_data manual__2024-12-15T04:27:58.151236+00:00 [running]> on host 2f4e9c743994
+[2024-12-15T04:37:05.630+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_enrollment_fact_data' AIRFLOW_CTX_TASK_ID='wait_for_etl_instruction_fact_data' AIRFLOW_CTX_EXECUTION_DATE='2024-12-15T04:27:58.151236+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-15T04:27:58.151236+00:00'
+[2024-12-15T04:37:05.634+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-15T04:37:05.635+0000] {baseoperator.py:399} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2024-12-15T04:37:05.636+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:37:05.637+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/utils/session.py:79: DeprecationWarning: This method is deprecated and will be removed in future.
+  return func(*args, session=session, **kwargs)
+
+[2024-12-15T04:38:05.648+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:39:05.665+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:40:05.680+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:41:05.693+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:42:05.706+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:43:05.717+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:44:05.743+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:45:05.779+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:46:05.793+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:47:05.814+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:47:05.824+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-15T04:47:05.824+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/sensors/external_task.py", line 348, in execute
+    super().execute(context)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/sensors/base.py", line 281, in execute
+    raise AirflowSensorTimeout(message)
+airflow.exceptions.AirflowSensorTimeout: Sensor has timed out; run duration of 600.1885194298811 seconds exceeds the specified timeout of 600.0.
+[2024-12-15T04:47:05.839+0000] {taskinstance.py:1206} INFO - Immediate failure requested. Marking task as FAILED. dag_id=etl_enrollment_fact_data, task_id=wait_for_etl_instruction_fact_data, run_id=manual__2024-12-15T04:27:58.151236+00:00, execution_date=20241215T042758, start_date=20241215T043705, end_date=20241215T044705
+[2024-12-15T04:47:05.855+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 490 for task wait_for_etl_instruction_fact_data (Sensor has timed out; run duration of 600.1885194298811 seconds exceeds the specified timeout of 600.0.; 632)
+[2024-12-15T04:47:05.908+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-12-15T04:47:05.928+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-15T04:47:05.929+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

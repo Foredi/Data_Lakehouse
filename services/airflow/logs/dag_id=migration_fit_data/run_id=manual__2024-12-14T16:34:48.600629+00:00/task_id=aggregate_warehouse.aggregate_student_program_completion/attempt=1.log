@@ -1,0 +1,97 @@
+[2024-12-14T16:36:24.940+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-14T16:36:24.992+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: migration_fit_data.aggregate_warehouse.aggregate_student_program_completion manual__2024-12-14T16:34:48.600629+00:00 [queued]>
+[2024-12-14T16:36:25.007+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: migration_fit_data.aggregate_warehouse.aggregate_student_program_completion manual__2024-12-14T16:34:48.600629+00:00 [queued]>
+[2024-12-14T16:36:25.009+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-14T16:36:25.024+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): aggregate_warehouse.aggregate_student_program_completion> on 2024-12-14 16:34:48.600629+00:00
+[2024-12-14T16:36:25.037+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=4989) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-14T16:36:25.040+0000] {standard_task_runner.py:63} INFO - Started process 5001 to run task
+[2024-12-14T16:36:25.043+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'migration_fit_data', 'aggregate_warehouse.aggregate_student_program_completion', 'manual__2024-12-14T16:34:48.600629+00:00', '--job-id', '284', '--raw', '--subdir', 'DAGS_FOLDER/elt_migrate.py', '--cfg-path', '/tmp/tmpp96oi3w9']
+[2024-12-14T16:36:25.052+0000] {standard_task_runner.py:91} INFO - Job 284: Subtask aggregate_warehouse.aggregate_student_program_completion
+[2024-12-14T16:36:25.188+0000] {task_command.py:426} INFO - Running <TaskInstance: migration_fit_data.aggregate_warehouse.aggregate_student_program_completion manual__2024-12-14T16:34:48.600629+00:00 [running]> on host 472b63b715e1
+[2024-12-14T16:36:25.418+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='migration_fit_data' AIRFLOW_CTX_TASK_ID='aggregate_warehouse.aggregate_student_program_completion' AIRFLOW_CTX_EXECUTION_DATE='2024-12-14T16:34:48.600629+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-14T16:34:48.600629+00:00'
+[2024-12-14T16:36:25.419+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-14T16:36:25.441+0000] {hive.py:475} INFO - USE `default`
+[2024-12-14T16:36:25.465+0000] {hive.py:475} INFO - CREATE NAMESPACE IF NOT EXISTS iceberg.aggr_warehouse
+[2024-12-14T16:36:25.530+0000] {hive.py:475} INFO - DROP TABLE IF EXISTS iceberg.aggr_warehouse.student_program_completion
+[2024-12-14T16:36:25.599+0000] {hive.py:475} INFO - 
+        CREATE OR REPLACE TABLE iceberg.aggr_warehouse.student_program_completion
+        USING parquet
+        AS
+        WITH program_requirements AS (
+            SELECT
+                ps.program_id,
+                SUM(ps.required_credit) AS total_required_credit,
+                SUM(ps.elective_credit) AS total_elective_credit
+            FROM
+                iceberg.warehouse.program_semester ps
+            GROUP BY
+                ps.program_id
+        ),
+        student_courses AS (
+            SELECT
+                s.student_id,
+                s.student_name,
+                ps.program_id,
+                ps.program_semester_id,
+                COALESCE(SUM(CASE WHEN c.category = 'required' THEN c.total_credit ELSE 0 END), 0) AS total_required_credit_registered,
+                COALESCE(SUM(CASE WHEN c.category = 'elective' THEN c.total_credit ELSE 0 END), 0) AS total_elective_credit_registered,
+                COALESCE(SUM(CASE WHEN c.category = 'required' AND sf.final_score >= 4 THEN c.total_credit ELSE 0 END), 0) AS total_required_credit_passed,
+                COALESCE(SUM(CASE WHEN c.category = 'elective' AND sf.final_score >= 4 THEN c.total_credit ELSE 0 END), 0) AS total_elective_credit_passed
+            FROM
+                iceberg.warehouse.student s
+            JOIN iceberg.warehouse.enroll_student es ON s.student_id = es.student_id
+            JOIN iceberg.warehouse.enrollment_fact ef ON es.enrollment_id = ef.enrollment_id
+            JOIN iceberg.warehouse.instruction_fact inf ON ef.instruction_id = inf.instruction_id
+            JOIN iceberg.warehouse.program_semester ps ON inf.program_semester_id = ps.program_semester_id
+            JOIN iceberg.warehouse.course c ON inf.course_id = c.course_id
+            LEFT JOIN iceberg.warehouse.score_fact sf ON sf.instruction_id = inf.instruction_id AND sf.student_id = s.student_id
+            GROUP BY
+                s.student_id,
+                s.student_name,
+                ps.program_id,
+                ps.program_semester_id
+        )
+        SELECT
+            sc.student_id,
+            sc.student_name,
+            sc.program_id,
+            pr.total_required_credit,
+            pr.total_elective_credit,
+            SUM(sc.total_required_credit_registered) AS total_required_credit_registered,
+            SUM(sc.total_elective_credit_registered) AS total_elective_credit_registered,
+            SUM(sc.total_required_credit_passed) AS total_required_credit_passed,
+            SUM(sc.total_elective_credit_passed) AS total_elective_credit_passed,
+            CASE 
+                WHEN SUM(sc.total_required_credit_registered) >= pr.total_required_credit
+                     AND SUM(sc.total_elective_credit_registered) >= pr.total_elective_credit
+                THEN 'Completed'
+                ELSE 'Not Completed'
+            END AS completion_status
+        FROM
+            student_courses sc
+        JOIN program_requirements pr ON sc.program_id = pr.program_id
+        GROUP BY
+            sc.student_id,
+            sc.student_name,
+            sc.program_id,
+            pr.total_required_credit,
+            pr.total_elective_credit;
+    
+[2024-12-14T16:36:31.159+0000] {__init__.py:412} INFO - DELETE /user/hive/warehouse/aggr_warehouse.db/student_program_completion_parquet recursive=True user.name=default namenode:9870
+[2024-12-14T16:36:31.186+0000] {hive.py:475} INFO - 
+        DROP TABLE IF EXISTS spark_catalog.aggr_warehouse.student_program_completion_parquet
+    
+[2024-12-14T16:36:31.313+0000] {hive.py:475} INFO - 
+        CREATE TABLE spark_catalog.aggr_warehouse.student_program_completion_parquet
+        USING parquet
+        AS
+        SELECT * FROM iceberg.aggr_warehouse.student_program_completion
+    
+[2024-12-14T16:36:31.673+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-14T16:36:31.673+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-14T16:36:31.684+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=migration_fit_data, task_id=aggregate_warehouse.aggregate_student_program_completion, run_id=manual__2024-12-14T16:34:48.600629+00:00, execution_date=20241214T163448, start_date=20241214T163624, end_date=20241214T163631
+[2024-12-14T16:36:31.733+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-14T16:36:31.761+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-14T16:36:31.762+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

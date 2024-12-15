@@ -1,0 +1,86 @@
+x-service-common:
+  &service-common
+  image: spark:3.5.0
+  networks:
+    fit_network:
+  restart: on-failure:3
+  environment:
+    - SPARK_MASTER=spark://spark-master:7077
+    - SPARK_HOME=${SPARK_HOME}
+  volumes:
+    - ./jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar:${SPARK_HOME}/jars/iceberg-spark-runtime-3.5_2.12-1.5.2.jar:ro
+    - ./config:${SPARK_HOME}/conf/:ro
+    - ./code:${SPARK_HOME}/code:ro
+    - ./scripts:${SPARK_HOME}/scripts:ro
+    - ./.env:${SPARK_HOME}/.env:ro
+    
+services:
+  # traffic_data_stream:
+  #   <<: *service-common
+  #   user: root
+  #   container_name: traffic_data_stream
+  #   depends_on:
+  #     spark-master:
+  #       condition: service_healthy
+  #   command: "${SPARK_HOME}/bin/spark-submit 
+  #     --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \ 
+  #     --master spark://spark-master:7077 \
+  #     --properties-file $SPARK_HOME/conf/traffic_data_stream.properties \
+  #     ${SPARK_HOME}/code/process_traffic_data.py"
+
+  spark-master:
+    # root user to avoid permission deny in $SPARK_HOME, need improving later
+    <<: *service-common
+    user: root 
+    container_name: spark-master
+    ports:
+      - "${SPARK_MASTER_WEB_UI_PORT}:8080"
+      - "${SPARK_MASTER_PORT}:7077"
+    healthcheck:
+      test: ["CMD", "curl", "-s", "http://localhost:8080/"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    command: bash -c "
+      ${SPARK_HOME}/sbin/start-master.sh \
+      && tail -f"
+
+  spark-thriftserver:
+    <<: *service-common
+    ports:
+      - "${SPARK_THRIFT_WEB_UI_PORT}:4040"
+      - "${SPARK_THRIFT_TCP_PORT}:10000"
+    container_name: spark-thriftserver
+    depends_on:
+      spark-master:
+        condition: service_healthy
+    entrypoint: ${SPARK_HOME}/scripts/start_sparkthrift.sh
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-s", "http://metastore:9083"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  spark-worker-1:
+    <<: *service-common
+    container_name: spark-worker-1
+    depends_on:
+      spark-master:
+        condition: service_healthy
+    command: bash -c "${SPARK_HOME}/sbin/start-worker.sh -m ${SPARK_WORKER_MEM} -c ${SPARK_WORKER_CORES} spark://spark-master:7077 && tail -f"
+
+  spark-worker-2:
+    <<: *service-common
+    container_name: spark-worker-2
+    depends_on:
+      spark-master:
+        condition: service_healthy
+    command: bash -c "${SPARK_HOME}/sbin/start-worker.sh -m ${SPARK_WORKER_MEM} -c ${SPARK_WORKER_CORES} spark://spark-master:7077 && tail -f"
+
+volumes:
+  spark-data:
+   
+networks:
+  fit_network:
+    external: true

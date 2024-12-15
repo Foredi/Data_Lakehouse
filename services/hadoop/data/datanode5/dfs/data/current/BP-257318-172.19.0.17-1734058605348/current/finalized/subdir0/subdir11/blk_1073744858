@@ -1,0 +1,107 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "4bab050a-b834-4b72-af56-c7865a9b55d4",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/course/*.snappy.parquet",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1734207516432,
+  "last-column-id" : 8,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "course_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 2,
+      "name" : "course_name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "course_code",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 4,
+      "name" : "category",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "total_credit",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 6,
+      "name" : "theory_credit",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 7,
+      "name" : "practice_credit",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 8,
+      "name" : "self_learning_credit",
+      "required" : false,
+      "type" : "long"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 4340828515467642207,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 4340828515467642207,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 4340828515467642207,
+    "timestamp-ms" : 1734207516432,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "250",
+      "added-files-size" : "5976",
+      "changed-partition-count" : "1",
+      "total-records" : "250",
+      "total-files-size" : "5976",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/course/*.snappy.parquet/metadata/snap-4340828515467642207-1-44296d3a-4bc1-4190-a2b5-57937101dbf8.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1734207516432,
+    "snapshot-id" : 4340828515467642207
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1734207490840,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/course/*.snappy.parquet/metadata/00000-f33b61f4-a79f-42d5-980d-3e25be3d055f.metadata.json"
+  } ]
+}

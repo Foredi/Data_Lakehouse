@@ -1,0 +1,86 @@
+course_id,course_name,course_code,category,total_credit,theory_credit,practice_credit,self_learning_credit
+116570,Nhập môn Tin học,4203002009,required,2,2,0,4
+116844,Chứng chỉ TOEIC 450,4203002027,required,0,0,0,0
+116576,Kỹ năng làm việc nhóm,4203003192,required,2,1,2,4
+116569,Giáo dục Quốc phòng và An ninh 1,4203003242,required,4,4,0,8
+116567,Toán cao cấp 1,4203003259,required,2,1,2,4
+116568,Giáo dục thể chất 1,4203003307,required,2,0,4,4
+116571,Nhập môn Lập trình,4203003848,required,2,0,4,4
+117985,Triết học Mác - Lênin,4203014164,required,3,3,0,6
+116578,Kỹ thuật lập trình,4203000941,required,3,2,2,6
+116577,Hệ thống Máy tính,4203002137,required,4,3,2,8
+116579,Tiếng anh 1,4203003067,required,3,3,0,6
+116575,Giáo dục thể chất 2,4203003306,required,2,0,4,4
+116573,Giáo dục quốc phòng và an ninh 2,4203003354,required,4,2,4,8
+117986,Kinh tế chính trị Mác - Lênin,4203014165,required,2,2,0,4
+116801,Toán ứng dụng,4203003193,elective,3,2,2,6
+116802,Hàm phức và phép biến đổi Laplace,4203003240,elective,3,2,2,6
+116799,Phương pháp tính,4203003320,elective,3,2,2,6
+116800,Vật lý đại cương,4203003345,elective,3,2,2,6
+116798,Logic học,4203003395,elective,3,2,2,6
+116589,Cấu trúc rời rạc,4203000901,required,3,3,0,6
+116587,Cấu trúc dữ liệu và giải thuật,4203000942,required,4,3,2,8
+116588,Hệ cơ sở dữ liệu,4203001146,required,4,3,2,8
+116591,Tiếng Anh 2,4203002421,required,3,3,0,6
+116574,Toán cao cấp 2,4203003288,required,2,1,2,4
+116586,Lập trình hướng đối tượng,4203003591,required,3,2,2,6
+116585,Giao tiếp kinh doanh,4203003196,elective,3,2,2,6
+116580,Kỹ năng xây dựng kế hoạch,4203003197,elective,3,2,2,6
+116581,Quản trị doanh nghiệp,4203003205,elective,3,2,2,6
+116583,Môi trường và con người,4203003206,elective,3,2,2,6
+116584,Quản trị học,4203003217,elective,3,2,2,6
+116582,Kế toán cơ bản,4203003285,elective,3,2,2,6
+134324,Kỹ năng sử dụng bàn phím và thiết bị văn phòng,4203014193,elective,3,2,2,6
+116794,Mạng máy tính,4203001058,required,3,3,0,6
+116792,Pháp luật đại cương,4203002422,required,2,2,0,4
+116796,Phương pháp luận nghiên cứu khoa học,4203003198,required,2,1,2,4
+116590,Xác suất trong Khoa học Dữ liệu,4203014061,required,2,1,2,4
+116795,Nhập môn Khoa học Dữ liệu,4203014104,required,3,2,2,6
+116592,Giải thuật và tối ưu hóa phân tán,4203014062,elective,3,2,2,6
+116593,Trực quan hóa dữ liệu,4203014063,elective,3,2,2,6
+116594,Đại số tuyến tính tính toán,4203014064,elective,3,2,2,6
+116803,Quá trình ngẫu nhiên,4203014106,elective,2,2,0,4
+116804,Các ngôn ngữ truy vấn cơ sở dữ liệu,4203014107,elective,2,2,0,4
+116805,Kiến trúc hướng dịch vụ và Điện toán đám mây,4203014108,elective,2,2,0,4
+117987,Trí tuệ nhân tạo,4203001266,required,3,3,0,6
+116809,Những vấn đề xã hội và đạo đức nghề nghiệp,4203003347,required,3,3,0,6
+116793,Thống kê máy tính và ứng dụng,4203003451,required,3,2,2,6
+116797,Lập trình phân tích dữ liệu,4203014105,required,3,2,2,6
+116807,Tối ưu hóa cho Khoa học dữ liệu,4203014109,required,3,2,2,6
+116811,Phân tích chuỗi thời gian,4203014110,elective,3,2,2,6
+116813,Kỹ thuật tài chính,4203014111,elective,3,2,2,6
+116817,Xử lý ảnh,4203014122,elective,3,2,2,6
+116808,Khai thác dữ liệu và ứng dụng,4203003443,required,3,2,2,6
+116810,Phát triển ứng dụng,4203003501,required,3,2,2,6
+116806,Máy học,4203003711,required,3,2,2,6
+117988,Chủ nghĩa xã hội khoa học,4203014167,required,2,2,0,4
+116820,Tương tác người máy,4203001076,elective,3,3,0,6
+116822,Công nghệ phần mềm,4203001111,elective,3,3,0,6
+116819,Tiếp thị điện tử,4203003453,elective,3,2,2,6
+116818,Nhập môn Robot,4203014112,elective,3,2,2,6
+116821,Giao dịch định lượng,4203014113,elective,3,2,2,6
+116823,Tính toán song song,4203014114,elective,3,2,2,6
+116824,Khai phá đồ thị,4203014115,elective,3,2,2,6
+116814,Tư tưởng Hồ Chí Minh,4203000664,required,2,2,0,4
+116816,Nhập môn dữ liệu lớn,4203002329,required,3,2,2,6
+116831,Học sâu,4203004116,required,3,2,2,6
+117989,Lịch sử Đảng Cộng sản Việt Nam,4203014169,required,2,2,0,4
+116826,Nhập môn an toàn thông tin,4203001004,elective,3,3,0,6
+116841,Hội họa,4203003194,elective,3,1,4,6
+116837,Xã hội học,4203003195,elective,3,2,2,6
+116840,Âm nhạc – Nhạc lý và Guitar căn bản,4203003203,elective,3,1,4,6
+118037,Tiếng Việt thực hành,4203003245,elective,3,2,2,6
+116836,Tâm lý học đại cương,4203003325,elective,3,2,2,6
+119744,Cơ sở văn hóa Việt Nam,4203010665,elective,3,2,2,6
+116825,Hệ khuyến nghị,4203014116,elective,3,2,2,6
+116827,Lý thuyết trò chơi,4203014117,elective,3,2,2,6
+116815,Xử lý ngôn ngữ tự nhiên,4203001385,required,3,3,0,6
+116829,Công nghệ mới trong phát triển ứng dụng CNTT,4203003147,required,3,2,2,6
+116830,Thị giác máy tính,4203014118,required,3,2,2,6
+117990,Các nền tảng dữ liệu,4203014180,required,3,2,2,6
+116833,Đảm bảo chất lượng và Kiểm thử phần mềm,4203003592,elective,3,2,2,6
+116832,Phân tích dữ liệu Bayesian,4203014119,elective,3,2,2,6
+116834,Phân tích kinh doanh,4203014120,elective,3,2,2,6
+116835,Giải tích ngẫu nhiên cho tài chính,4203014121,elective,3,2,2,6
+116842,Thực tập doanh nghiệp,4203003098,required,5,0,10,10
+117984,Khóa luận tốt nghiệp,4203014170,required,8,0,16,16

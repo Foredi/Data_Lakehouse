@@ -1,0 +1,50 @@
+[2024-12-13T14:55:18.231+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-13T14:55:18.576+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: migration_fit_schema.insert_data.insert_data_instruction_lecturer manual__2024-12-13T14:54:47.515931+00:00 [queued]>
+[2024-12-13T14:55:18.587+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: migration_fit_schema.insert_data.insert_data_instruction_lecturer manual__2024-12-13T14:54:47.515931+00:00 [queued]>
+[2024-12-13T14:55:18.588+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-13T14:55:18.603+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): insert_data.insert_data_instruction_lecturer> on 2024-12-13 14:54:47.515931+00:00
+[2024-12-13T14:55:18.615+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=2264) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-13T14:55:18.618+0000] {standard_task_runner.py:63} INFO - Started process 2266 to run task
+[2024-12-13T14:55:18.620+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'migration_fit_schema', 'insert_data.insert_data_instruction_lecturer', 'manual__2024-12-13T14:54:47.515931+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/etl_migrate.py', '--cfg-path', '/tmp/tmp1mg9ttz_']
+[2024-12-13T14:55:18.625+0000] {standard_task_runner.py:91} INFO - Job 14: Subtask insert_data.insert_data_instruction_lecturer
+[2024-12-13T14:55:18.691+0000] {task_command.py:426} INFO - Running <TaskInstance: migration_fit_schema.insert_data.insert_data_instruction_lecturer manual__2024-12-13T14:54:47.515931+00:00 [running]> on host cc53e3c9aaad
+[2024-12-13T14:55:18.800+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='migration_fit_schema' AIRFLOW_CTX_TASK_ID='insert_data.insert_data_instruction_lecturer' AIRFLOW_CTX_EXECUTION_DATE='2024-12-13T14:54:47.515931+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-13T14:54:47.515931+00:00'
+[2024-12-13T14:55:18.802+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-13T14:55:19.162+0000] {logging_mixin.py:188} INFO - Transaction failed for table instruction_lecturer: insert or update on table "instruction_lecturer" violates foreign key constraint "instruction_lecturer_instruction_id_fkey"
+DETAIL:  Key (instruction_id)=(461) is not present in table "instruction_fact".
+[2024-12-13T14:55:19.187+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-13T14:55:19.188+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/tasks/etl_task.py", line 98, in insert_data
+    raise e
+  File "/opt/airflow/dags/tasks/etl_task.py", line 90, in insert_data
+    execute_values(cursor, insert_query, data, template=f"({placeholders})", page_size=1000)
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+psycopg2.errors.ForeignKeyViolation: insert or update on table "instruction_lecturer" violates foreign key constraint "instruction_lecturer_instruction_id_fkey"
+DETAIL:  Key (instruction_id)=(461) is not present in table "instruction_fact".
+
+[2024-12-13T14:55:19.201+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=migration_fit_schema, task_id=insert_data.insert_data_instruction_lecturer, run_id=manual__2024-12-13T14:54:47.515931+00:00, execution_date=20241213T145447, start_date=20241213T145518, end_date=20241213T145519
+[2024-12-13T14:55:19.224+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 14 for task insert_data.insert_data_instruction_lecturer (insert or update on table "instruction_lecturer" violates foreign key constraint "instruction_lecturer_instruction_id_fkey"
+DETAIL:  Key (instruction_id)=(461) is not present in table "instruction_fact".
+; 2266)
+[2024-12-13T14:55:19.235+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-12-13T14:55:19.267+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-13T14:55:19.272+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

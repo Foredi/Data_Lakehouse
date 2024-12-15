@@ -1,0 +1,82 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "7842774f-2e3a-4619-9ced-1a41d401ac8a",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/enroll_student/*.snappy.parquet",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1734207517961,
+  "last-column-id" : 3,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "student_id",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "enrollment_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 3,
+      "name" : "enrollment_time",
+      "required" : false,
+      "type" : "timestamptz"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 902354694443645222,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 902354694443645222,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 902354694443645222,
+    "timestamp-ms" : 1734207517961,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "21063",
+      "added-files-size" : "185289",
+      "changed-partition-count" : "1",
+      "total-records" : "21063",
+      "total-files-size" : "185289",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/enroll_student/*.snappy.parquet/metadata/snap-902354694443645222-1-32a900a3-e567-43f6-8ddb-b7fea3d64bf2.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1734207517961,
+    "snapshot-id" : 902354694443645222
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1734207493382,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/enroll_student/*.snappy.parquet/metadata/00000-7dd71972-9ae5-4d0a-9741-d55dc8e1dd9f.metadata.json"
+  } ]
+}

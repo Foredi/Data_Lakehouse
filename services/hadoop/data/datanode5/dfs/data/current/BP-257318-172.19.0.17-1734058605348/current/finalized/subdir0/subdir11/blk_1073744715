@@ -1,0 +1,81 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "157f06d1-ae6f-4c9e-9d7c-ce4423c895ae",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/score_fact/*.snappy.parquet",
+  "last-sequence-number" : 0,
+  "last-updated-ms" : 1734195723868,
+  "last-column-id" : 9,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "score_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 2,
+      "name" : "instruction_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 3,
+      "name" : "student_id",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "final_score",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 5,
+      "name" : "final_score_4",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 6,
+      "name" : "academic_rank",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 7,
+      "name" : "is_practice",
+      "required" : false,
+      "type" : "boolean"
+    }, {
+      "id" : 8,
+      "name" : "last_modified_date",
+      "required" : false,
+      "type" : "timestamptz"
+    }, {
+      "id" : 9,
+      "name" : "etl_date",
+      "required" : false,
+      "type" : "timestamptz"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : -1,
+  "refs" : { },
+  "snapshots" : [ ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ ],
+  "metadata-log" : [ ]
+}

@@ -1,0 +1,111 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "ed99ab80-1c8f-469b-aae1-d8c7e9c1153c",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/instruction_fact/*.snappy.parquet",
+  "last-sequence-number" : 0,
+  "last-updated-ms" : 1734194152052,
+  "last-column-id" : 15,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "instruction_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 2,
+      "name" : "program_semester_id",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "course_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 4,
+      "name" : "class_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 5,
+      "name" : "is_required",
+      "required" : false,
+      "type" : "boolean"
+    }, {
+      "id" : 6,
+      "name" : "num_student",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 7,
+      "name" : "num_pass_student",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 8,
+      "name" : "num_fail_student",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 9,
+      "name" : "avg_final_score",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 10,
+      "name" : "instruction_status",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 11,
+      "name" : "instruction_allocate",
+      "required" : false,
+      "type" : "timestamptz"
+    }, {
+      "id" : 12,
+      "name" : "instruction_time_start",
+      "required" : false,
+      "type" : "timestamptz"
+    }, {
+      "id" : 13,
+      "name" : "instruction_time_end",
+      "required" : false,
+      "type" : "timestamptz"
+    }, {
+      "id" : 14,
+      "name" : "last_modified_date",
+      "required" : false,
+      "type" : "timestamptz"
+    }, {
+      "id" : 15,
+      "name" : "etl_date",
+      "required" : false,
+      "type" : "timestamptz"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : -1,
+  "refs" : { },
+  "snapshots" : [ ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ ],
+  "metadata-log" : [ ]
+}

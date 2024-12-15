@@ -1,0 +1,104 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "5bdc0d59-44f8-43ce-9e7b-ca3a84ac4cca",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/program/*.snappy.parquet",
+  "last-sequence-number" : 2,
+  "last-updated-ms" : 1734175580523,
+  "last-column-id" : 2,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "program_id",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "class_of",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 3513059222237468359,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 3513059222237468359,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 5407815482166672081,
+    "timestamp-ms" : 1734175158232,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "1",
+      "added-files-size" : "740",
+      "changed-partition-count" : "1",
+      "total-records" : "1",
+      "total-files-size" : "740",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/program/*.snappy.parquet/metadata/snap-5407815482166672081-1-94439cb9-d4e7-4253-af45-b729f27c4570.avro",
+    "schema-id" : 0
+  }, {
+    "sequence-number" : 2,
+    "snapshot-id" : 3513059222237468359,
+    "parent-snapshot-id" : 5407815482166672081,
+    "timestamp-ms" : 1734175580523,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "2",
+      "added-files-size" : "726",
+      "changed-partition-count" : "1",
+      "total-records" : "3",
+      "total-files-size" : "1466",
+      "total-data-files" : "2",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/program/*.snappy.parquet/metadata/snap-3513059222237468359-1-2a80bf66-605d-44d1-85ff-b8926a49fddc.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1734175158232,
+    "snapshot-id" : 5407815482166672081
+  }, {
+    "timestamp-ms" : 1734175580523,
+    "snapshot-id" : 3513059222237468359
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1734175122568,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/program/*.snappy.parquet/metadata/00000-1dfb3e5d-67d0-4c6c-8547-bb178e1393e1.metadata.json"
+  }, {
+    "timestamp-ms" : 1734175158232,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/program/*.snappy.parquet/metadata/00001-a85b9f2d-ed84-4ced-b4d8-b83d19f734d9.metadata.json"
+  } ]
+}

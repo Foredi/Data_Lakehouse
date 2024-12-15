@@ -1,0 +1,90 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "95b0429a-d6aa-4191-a7dc-9014cf94e92d",
+  "location" : "hdfs://namenode:9000/user/hive/warehouse/aggr_warehouse.db/score_distribution",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1734104173733,
+  "last-column-id" : 5,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "course_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 2,
+      "name" : "course_name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "semester_name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "score_range",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "num_students_in_range",
+      "required" : false,
+      "type" : "long"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.format.default" : "parquet",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 2003253420630277356,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 2003253420630277356,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 2003253420630277356,
+    "timestamp-ms" : 1734104173733,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "app-20241213152935-0000",
+      "added-data-files" : "1",
+      "added-records" : "185",
+      "added-files-size" : "3968",
+      "changed-partition-count" : "1",
+      "total-records" : "185",
+      "total-files-size" : "3968",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/user/hive/warehouse/aggr_warehouse.db/score_distribution/metadata/snap-2003253420630277356-1-6f8271e1-ee4d-4d9a-b35d-96c6a2d4ca21.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1734104173733,
+    "snapshot-id" : 2003253420630277356
+  } ],
+  "metadata-log" : [ ]
+}

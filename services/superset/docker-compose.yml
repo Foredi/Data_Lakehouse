@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  superset:
+    deploy:
+      resources:
+        reservations:
+          memory: 1G  # Set memory reservation (minimum guaranteed)
+        limits:
+          memory: 1G
+    build: .
+    container_name: superset
+    networks:
+      fit_network:
+    restart: unless-stopped
+    environment:
+      SUPERSET_SECRET_KEY: "${SUPERSET_SECRET_KEY}"
+      SUPERSET_LOAD_EXAMPLES: "yes"
+    volumes:
+      - superset_home:/app/superset_home
+    ports:
+      - "8088:8088"  # Ánh xạ cổng 8088 của container tới cổng 8088 của máy chủ
+
+volumes:
+  superset_home:
+
+networks:
+  fit_network:
+    external: true

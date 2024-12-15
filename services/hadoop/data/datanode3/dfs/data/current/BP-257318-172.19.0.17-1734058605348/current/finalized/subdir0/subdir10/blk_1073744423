@@ -1,0 +1,139 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "1b8d650e-68b5-4cc5-90e5-d45752400d8c",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/student/*.snappy.parquet",
+  "last-sequence-number" : 2,
+  "last-updated-ms" : 1734175581139,
+  "last-column-id" : 9,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "student_id",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "student_name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "class_name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "edu_mail",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "address_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 6,
+      "name" : "national_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 7,
+      "name" : "key_year",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 8,
+      "name" : "gender",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 9,
+      "name" : "student_dob",
+      "required" : false,
+      "type" : "timestamptz"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 1899729341269474836,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 1899729341269474836,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 5896336606039332415,
+    "timestamp-ms" : 1734175157805,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "350",
+      "added-files-size" : "12915",
+      "changed-partition-count" : "1",
+      "total-records" : "350",
+      "total-files-size" : "12915",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/student/*.snappy.parquet/metadata/snap-5896336606039332415-1-7ccb2950-922b-444b-a268-a45d34ebbd40.avro",
+    "schema-id" : 0
+  }, {
+    "sequence-number" : 2,
+    "snapshot-id" : 1899729341269474836,
+    "parent-snapshot-id" : 5896336606039332415,
+    "timestamp-ms" : 1734175581139,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "120",
+      "added-files-size" : "7069",
+      "changed-partition-count" : "1",
+      "total-records" : "470",
+      "total-files-size" : "19984",
+      "total-data-files" : "2",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/student/*.snappy.parquet/metadata/snap-1899729341269474836-1-799e5101-80ce-434b-92af-36812ced0066.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1734175157805,
+    "snapshot-id" : 5896336606039332415
+  }, {
+    "timestamp-ms" : 1734175581139,
+    "snapshot-id" : 1899729341269474836
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1734175106093,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/student/*.snappy.parquet/metadata/00000-07aa1334-f219-43a7-85a0-95ce5c57847a.metadata.json"
+  }, {
+    "timestamp-ms" : 1734175157805,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/student/*.snappy.parquet/metadata/00001-e668f4d0-f8b0-4cab-abf0-66a4c09c67fd.metadata.json"
+  } ]
+}

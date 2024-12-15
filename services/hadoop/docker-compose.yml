@@ -1,0 +1,88 @@
+x-hdfs-common:
+  &hdfs-common
+  image: gchq/hdfs:latest
+  networks:
+    fit_network:
+  environment:
+    - CLUSTER_NAME=hadoop
+  volumes:
+    - ./config:/opt/hadoop/etc/hadoop:ro
+  restart: on-failure:3
+  deploy:
+    resources:
+      reservations:
+        memory: 1G # Set memory reservation (minimum guaranteed)
+      limits:
+        memory: 2G
+
+x-datanode-common:
+  &datanode-common
+  <<: *hdfs-common
+  depends_on:
+      - namenode
+  command: datanode
+
+services:
+  namenode:
+    <<: *hdfs-common
+    container_name: namenode
+    hostname: namenode
+    ports:
+      - "9870:9870"
+      - "9004:9000"
+    volumes:
+      - ./config:/opt/hadoop/etc/hadoop:ro
+      - ./data/namenode:/data1
+    command: namenode
+
+  datanode1:
+    <<: *datanode-common
+    container_name: datanode1
+    hostname: datanode1
+    volumes:
+      - ./data/datanode1:/data1
+      - ./config:/opt/hadoop/etc/hadoop:ro
+
+  datanode2:
+    <<: *datanode-common
+    container_name: datanode2
+    hostname: datanode2
+    volumes:
+      - ./data/datanode2:/data1
+      - ./config:/opt/hadoop/etc/hadoop:ro
+      
+  datanode3:
+    <<: *datanode-common
+    container_name: datanode3
+    hostname: datanode3
+    volumes:
+      - ./data/datanode3:/data1
+      - ./config:/opt/hadoop/etc/hadoop:ro
+
+  datanode4:
+    <<: *datanode-common
+    container_name: datanode4
+    hostname: datanode4
+    volumes:
+      - ./data/datanode4:/data1
+      - ./config:/opt/hadoop/etc/hadoop:ro
+
+  datanode5:
+    <<: *datanode-common
+    container_name: datanode5
+    hostname: datanode5
+    volumes:
+      - ./data/datanode5:/data1
+      - ./config:/opt/hadoop/etc/hadoop:ro
+
+volumes:
+  namenode:
+  datanode1:
+  datanode2:
+  datanode3:
+  datanode4:
+  datanode5:
+    
+networks:
+  fit_network:
+    external: true

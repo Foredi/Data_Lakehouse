@@ -1,0 +1,1 @@
+[2024-12-13T21:18:08.484+0000] {task_context_logger.py:104} ERROR - Executor reports task instance <TaskInstance: etl_instruction_fact_data.get_raw_data.extract_raw_instruction_lecturer manual__2024-12-13T21:11:28.590624+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?

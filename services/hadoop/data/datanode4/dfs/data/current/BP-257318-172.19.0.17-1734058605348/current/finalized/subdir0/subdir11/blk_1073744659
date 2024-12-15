@@ -1,0 +1,77 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "c258b7a0-9126-4a73-88c8-2812f2468036",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/program/*.snappy.parquet",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1734194177873,
+  "last-column-id" : 2,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "program_id",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "class_of",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 5507034397823859153,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 5507034397823859153,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 5507034397823859153,
+    "timestamp-ms" : 1734194177873,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "3",
+      "added-files-size" : "737",
+      "changed-partition-count" : "1",
+      "total-records" : "3",
+      "total-files-size" : "737",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/program/*.snappy.parquet/metadata/snap-5507034397823859153-1-4dbbf460-93da-4aec-9896-3720e0944638.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1734194177873,
+    "snapshot-id" : 5507034397823859153
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1734194150326,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/program/*.snappy.parquet/metadata/00000-806c03e2-d3ec-4054-9176-e7cb4dcd4a1d.metadata.json"
+  } ]
+}

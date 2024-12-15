@@ -1,0 +1,100 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "b5d15540-cd3e-494e-a7d3-66eaaee6cb34",
+  "location" : "hdfs://namenode:9000/user/hive/warehouse/aggr_warehouse.db/lecturer_performance",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1734237013844,
+  "last-column-id" : 7,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "lecturer_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 2,
+      "name" : "lecturer_name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "course_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 4,
+      "name" : "course_name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "semester_name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 6,
+      "name" : "num_classes_taught",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 7,
+      "name" : "average_class_score",
+      "required" : false,
+      "type" : "double"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.format.default" : "parquet",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 7283243965244480049,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 7283243965244480049,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 7283243965244480049,
+    "timestamp-ms" : 1734237013844,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "383",
+      "added-files-size" : "8994",
+      "changed-partition-count" : "1",
+      "total-records" : "383",
+      "total-files-size" : "8994",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/user/hive/warehouse/aggr_warehouse.db/lecturer_performance/metadata/snap-7283243965244480049-1-47c600a5-998e-4c0d-8cca-a931f1a24f1f.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1734237013844,
+    "snapshot-id" : 7283243965244480049
+  } ],
+  "metadata-log" : [ ]
+}

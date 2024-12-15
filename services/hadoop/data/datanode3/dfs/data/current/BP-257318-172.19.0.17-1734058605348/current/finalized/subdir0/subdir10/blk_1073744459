@@ -1,0 +1,114 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "005809e6-2e4b-47fe-93dd-7827c52a1874",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/instruction_lecturer/*.snappy.parquet",
+  "last-sequence-number" : 2,
+  "last-updated-ms" : 1734175653225,
+  "last-column-id" : 4,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "instruction_lecturer_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 2,
+      "name" : "instruction_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 3,
+      "name" : "lecturer_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 4,
+      "name" : "lecturer_type",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 6770065398102529796,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 6770065398102529796,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 8334330836304980170,
+    "timestamp-ms" : 1734175156053,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "1020",
+      "added-files-size" : "6945",
+      "changed-partition-count" : "1",
+      "total-records" : "1020",
+      "total-files-size" : "6945",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/instruction_lecturer/*.snappy.parquet/metadata/snap-8334330836304980170-1-3960a609-8411-40c4-9359-e0970362b5cf.avro",
+    "schema-id" : 0
+  }, {
+    "sequence-number" : 2,
+    "snapshot-id" : 6770065398102529796,
+    "parent-snapshot-id" : 8334330836304980170,
+    "timestamp-ms" : 1734175653225,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "23",
+      "added-files-size" : "1603",
+      "changed-partition-count" : "1",
+      "total-records" : "1043",
+      "total-files-size" : "8548",
+      "total-data-files" : "2",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/instruction_lecturer/*.snappy.parquet/metadata/snap-6770065398102529796-1-fc4d063d-3552-43fb-afb1-21f8c62b80a0.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1734175156053,
+    "snapshot-id" : 8334330836304980170
+  }, {
+    "timestamp-ms" : 1734175653225,
+    "snapshot-id" : 6770065398102529796
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1734175102622,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/instruction_lecturer/*.snappy.parquet/metadata/00000-363e97e5-2140-4669-baaa-f5eb27209876.metadata.json"
+  }, {
+    "timestamp-ms" : 1734175156053,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/instruction_lecturer/*.snappy.parquet/metadata/00001-78f5fd37-dc57-40c2-adac-d0b99371327f.metadata.json"
+  } ]
+}

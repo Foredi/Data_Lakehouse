@@ -1,0 +1,92 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "2e40a8d5-43bf-447c-b322-cdce5065a3b5",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/employee/*.snappy.parquet",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1734207513869,
+  "last-column-id" : 5,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "employee_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 2,
+      "name" : "employee_name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "day_of_birth",
+      "required" : false,
+      "type" : "timestamptz"
+    }, {
+      "id" : 4,
+      "name" : "nationality",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "insurance_id",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 3137859442067129118,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 3137859442067129118,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 3137859442067129118,
+    "timestamp-ms" : 1734207513869,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "171",
+      "added-files-size" : "4414",
+      "changed-partition-count" : "1",
+      "total-records" : "171",
+      "total-files-size" : "4414",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/employee/*.snappy.parquet/metadata/snap-3137859442067129118-1-2d2a69f5-7da6-4ca5-aabb-de5851df76c1.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1734207513869,
+    "snapshot-id" : 3137859442067129118
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1734207492734,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/employee/*.snappy.parquet/metadata/00000-22cc9b7e-63f0-459f-a8c1-0faf23f6537d.metadata.json"
+  } ]
+}

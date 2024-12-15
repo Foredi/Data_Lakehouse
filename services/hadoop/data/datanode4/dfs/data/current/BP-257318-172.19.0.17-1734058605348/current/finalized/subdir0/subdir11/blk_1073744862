@@ -1,0 +1,112 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "a0526cce-ece2-42c1-8f54-8eadd51908a9",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/student/*.snappy.parquet",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1734207516768,
+  "last-column-id" : 9,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "student_id",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "student_name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "class_name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "edu_mail",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "address_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 6,
+      "name" : "national_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 7,
+      "name" : "key_year",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 8,
+      "name" : "gender",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 9,
+      "name" : "student_dob",
+      "required" : false,
+      "type" : "timestamptz"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 726481660760800993,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 726481660760800993,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 726481660760800993,
+    "timestamp-ms" : 1734207516768,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "470",
+      "added-files-size" : "17448",
+      "changed-partition-count" : "1",
+      "total-records" : "470",
+      "total-files-size" : "17448",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/student/*.snappy.parquet/metadata/snap-726481660760800993-1-a3555e29-775c-403c-b033-68101c1833be.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1734207516768,
+    "snapshot-id" : 726481660760800993
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1734207492173,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/student/*.snappy.parquet/metadata/00000-c620ca3b-054f-4d1c-a729-ae0b1c7846b7.metadata.json"
+  } ]
+}

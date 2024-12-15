@@ -1,0 +1,10 @@
+program_semester_id,program_id,semester_name,total_credit,required_credit,elective_credit
+K16DS_1,K16DS,Học kỳ 1,11,11,0
+K16DS_2,K16DS,Học kỳ 2,12,9,3
+K16DS_3,K16DS,Học kỳ 3,19,16,3
+K16DS_4,K16DS,Học kỳ 4,17,12,5
+K16DS_5,K16DS,Học kỳ 5,18,15,3
+K16DS_6,K16DS,Học kỳ 6,17,11,6
+K16DS_7,K16DS,Học kỳ 7,16,10,6
+K16DS_8,K16DS,Học kỳ 8,15,12,3
+K16DS_9,K16DS,Học kỳ 9,13,13,0

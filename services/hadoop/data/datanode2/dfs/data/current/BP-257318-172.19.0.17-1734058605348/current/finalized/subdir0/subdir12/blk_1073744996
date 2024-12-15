@@ -1,0 +1,115 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "70580f92-f01d-4ae3-a4a8-fcf311a973e3",
+  "location" : "hdfs://namenode:9000/user/hive/warehouse/aggr_warehouse.db/student_program_completion",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1734237155380,
+  "last-column-id" : 10,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "student_id",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "student_name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "program_id",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "total_required_credit",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 5,
+      "name" : "total_elective_credit",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 6,
+      "name" : "total_required_credit_registered",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 7,
+      "name" : "total_elective_credit_registered",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 8,
+      "name" : "total_required_credit_passed",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 9,
+      "name" : "total_elective_credit_passed",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 10,
+      "name" : "completion_status",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.format.default" : "parquet",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 7999861237422755533,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 7999861237422755533,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 7999861237422755533,
+    "timestamp-ms" : 1734237155380,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "507",
+      "added-files-size" : "10964",
+      "changed-partition-count" : "1",
+      "total-records" : "507",
+      "total-files-size" : "10964",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/user/hive/warehouse/aggr_warehouse.db/student_program_completion/metadata/snap-7999861237422755533-1-ab33ccde-2e7b-45bc-8e0d-b3d6c14bee02.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1734237155380,
+    "snapshot-id" : 7999861237422755533
+  } ],
+  "metadata-log" : [ ]
+}

@@ -1,0 +1,24 @@
+[2024-12-14T10:49:38.547+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-14T10:49:38.622+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_dimention_data.get_raw_data.extract_raw_program_semester manual__2024-12-14T10:49:34.305778+00:00 [queued]>
+[2024-12-14T10:49:38.660+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_dimention_data.get_raw_data.extract_raw_program_semester manual__2024-12-14T10:49:34.305778+00:00 [queued]>
+[2024-12-14T10:49:38.661+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-14T10:49:38.755+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): get_raw_data.extract_raw_program_semester> on 2024-12-14 10:49:34.305778+00:00
+[2024-12-14T10:49:38.832+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_dimention_data', 'get_raw_data.extract_raw_program_semester', 'manual__2024-12-14T10:49:34.305778+00:00', '--job-id', '122', '--raw', '--subdir', 'DAGS_FOLDER/elt_dimention.py', '--cfg-path', '/tmp/tmpcepl18ij']
+[2024-12-14T10:49:38.840+0000] {standard_task_runner.py:91} INFO - Job 122: Subtask get_raw_data.extract_raw_program_semester
+[2024-12-14T10:49:38.857+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=546) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-14T10:49:38.865+0000] {standard_task_runner.py:63} INFO - Started process 563 to run task
+[2024-12-14T10:49:38.973+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_dimention_data.get_raw_data.extract_raw_program_semester manual__2024-12-14T10:49:34.305778+00:00 [running]> on host 06cbf31e97a5
+[2024-12-14T10:49:39.284+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_dimention_data' AIRFLOW_CTX_TASK_ID='get_raw_data.extract_raw_program_semester' AIRFLOW_CTX_EXECUTION_DATE='2024-12-14T10:49:34.305778+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-14T10:49:34.305778+00:00'
+[2024-12-14T10:49:39.287+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-14T10:49:40.172+0000] {__init__.py:412} INFO - DELETE /fit_warehouse/raw/program_semester/ recursive=True user.name=default namenode:9870
+[2024-12-14T10:49:40.212+0000] {__init__.py:412} INFO - GETFILESTATUS /fit_warehouse/raw/program_semester/ user.name=default namenode:9870
+[2024-12-14T10:49:40.229+0000] {__init__.py:412} INFO - MKDIRS /fit_warehouse/raw/program_semester/ user.name=default namenode:9870
+[2024-12-14T10:49:40.239+0000] {__init__.py:412} INFO - CREATE /fit_warehouse/raw/program_semester/program_semester_01.snappy.parquet overwrite=True async_=True user.name=default namenode:9870
+[2024-12-14T10:49:40.381+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-14T10:49:40.382+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-14T10:49:40.398+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_dimention_data, task_id=get_raw_data.extract_raw_program_semester, run_id=manual__2024-12-14T10:49:34.305778+00:00, execution_date=20241214T104934, start_date=20241214T104938, end_date=20241214T104940
+[2024-12-14T10:49:40.446+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-14T10:49:40.539+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-14T10:49:40.540+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

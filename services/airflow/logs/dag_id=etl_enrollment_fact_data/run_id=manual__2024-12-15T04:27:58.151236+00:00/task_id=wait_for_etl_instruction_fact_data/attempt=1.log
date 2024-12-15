@@ -1,0 +1,52 @@
+[2024-12-15T04:28:01.678+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-15T04:28:01.699+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_enrollment_fact_data.wait_for_etl_instruction_fact_data manual__2024-12-15T04:27:58.151236+00:00 [queued]>
+[2024-12-15T04:28:01.713+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_enrollment_fact_data.wait_for_etl_instruction_fact_data manual__2024-12-15T04:27:58.151236+00:00 [queued]>
+[2024-12-15T04:28:01.714+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-15T04:28:01.724+0000] {taskinstance.py:2330} INFO - Executing <Task(ExternalTaskSensor): wait_for_etl_instruction_fact_data> on 2024-12-15 04:27:58.151236+00:00
+[2024-12-15T04:28:01.738+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=409) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-15T04:28:01.740+0000] {standard_task_runner.py:63} INFO - Started process 411 to run task
+[2024-12-15T04:28:01.747+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_enrollment_fact_data', 'wait_for_etl_instruction_fact_data', 'manual__2024-12-15T04:27:58.151236+00:00', '--job-id', '453', '--raw', '--subdir', 'DAGS_FOLDER/elt_enrollment_fact.py', '--cfg-path', '/tmp/tmptfaqcghm']
+[2024-12-15T04:28:01.751+0000] {standard_task_runner.py:91} INFO - Job 453: Subtask wait_for_etl_instruction_fact_data
+[2024-12-15T04:28:01.851+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_enrollment_fact_data.wait_for_etl_instruction_fact_data manual__2024-12-15T04:27:58.151236+00:00 [running]> on host 2f4e9c743994
+[2024-12-15T04:28:01.950+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_enrollment_fact_data' AIRFLOW_CTX_TASK_ID='wait_for_etl_instruction_fact_data' AIRFLOW_CTX_EXECUTION_DATE='2024-12-15T04:27:58.151236+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-15T04:27:58.151236+00:00'
+[2024-12-15T04:28:01.951+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-15T04:28:01.952+0000] {baseoperator.py:399} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2024-12-15T04:28:01.952+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:28:01.953+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/utils/session.py:79: DeprecationWarning: This method is deprecated and will be removed in future.
+  return func(*args, session=session, **kwargs)
+
+[2024-12-15T04:29:01.962+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:30:01.991+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:31:02.111+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:32:02.135+0000] {external_task.py:274} INFO - Poking for DAG 'etl_instruction_fact_data' on 2024-12-15T04:27:58.151236+00:00 ... 
+[2024-12-15T04:32:04.148+0000] {local_task_job_runner.py:310} WARNING - State of this instance has been externally set to restarting. Terminating instance.
+[2024-12-15T04:32:04.149+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-12-15T04:32:04.150+0000] {process_utils.py:132} INFO - Sending 15 to group 411. PIDs of all processes in the group: [411]
+[2024-12-15T04:32:04.151+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 411
+[2024-12-15T04:32:04.153+0000] {taskinstance.py:2611} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-12-15T04:32:04.153+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-15T04:32:04.165+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/sensors/external_task.py", line 348, in execute
+    super().execute(context)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/sensors/base.py", line 292, in execute
+    time.sleep(self._get_next_poke_interval(started_at, run_duration, try_number))
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 2613, in signal_handler
+    raise AirflowTaskTerminated("Task received SIGTERM signal")
+airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
+[2024-12-15T04:32:04.184+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=etl_enrollment_fact_data, task_id=wait_for_etl_instruction_fact_data, run_id=manual__2024-12-15T04:27:58.151236+00:00, execution_date=20241215T042758, start_date=20241215T042801, end_date=20241215T043204
+[2024-12-15T04:32:04.246+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=411, status='terminated', exitcode=2, started='04:28:00') (411) terminated with exit code 2

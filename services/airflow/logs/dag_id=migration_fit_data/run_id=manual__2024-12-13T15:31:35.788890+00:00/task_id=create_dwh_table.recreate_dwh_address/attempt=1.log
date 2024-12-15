@@ -1,0 +1,29 @@
+[2024-12-13T15:32:31.317+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-13T15:32:31.368+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: migration_fit_data.create_dwh_table.recreate_dwh_address manual__2024-12-13T15:31:35.788890+00:00 [queued]>
+[2024-12-13T15:32:31.388+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: migration_fit_data.create_dwh_table.recreate_dwh_address manual__2024-12-13T15:31:35.788890+00:00 [queued]>
+[2024-12-13T15:32:31.389+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-13T15:32:31.432+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): create_dwh_table.recreate_dwh_address> on 2024-12-13 15:31:35.788890+00:00
+[2024-12-13T15:32:31.449+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=255) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-13T15:32:31.457+0000] {standard_task_runner.py:63} INFO - Started process 276 to run task
+[2024-12-13T15:32:31.460+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'migration_fit_data', 'create_dwh_table.recreate_dwh_address', 'manual__2024-12-13T15:31:35.788890+00:00', '--job-id', '51', '--raw', '--subdir', 'DAGS_FOLDER/elt_migrate.py', '--cfg-path', '/tmp/tmpvj7ujxy2']
+[2024-12-13T15:32:31.471+0000] {standard_task_runner.py:91} INFO - Job 51: Subtask create_dwh_table.recreate_dwh_address
+[2024-12-13T15:32:31.647+0000] {task_command.py:426} INFO - Running <TaskInstance: migration_fit_data.create_dwh_table.recreate_dwh_address manual__2024-12-13T15:31:35.788890+00:00 [running]> on host 1fe973f28a1c
+[2024-12-13T15:32:32.302+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='migration_fit_data' AIRFLOW_CTX_TASK_ID='create_dwh_table.recreate_dwh_address' AIRFLOW_CTX_EXECUTION_DATE='2024-12-13T15:31:35.788890+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-13T15:31:35.788890+00:00'
+[2024-12-13T15:32:32.312+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-13T15:32:32.398+0000] {hive.py:475} INFO - USE `default`
+[2024-12-13T15:32:33.133+0000] {hive.py:475} INFO - DROP TABLE IF EXISTS iceberg.warehouse.address
+[2024-12-13T15:32:33.231+0000] {hive.py:475} INFO - CREATE DATABASE IF NOT EXISTS warehouse
+[2024-12-13T15:32:33.369+0000] {hive.py:475} INFO - 
+        CREATE TABLE IF NOT EXISTS iceberg.warehouse.address (
+            address_id BIGINT,ward STRING,district STRING,city STRING   
+        )
+        USING iceberg
+        LOCATION '/fit_warehouse/warehouse/address/*.snappy.parquet'
+    
+[2024-12-13T15:32:37.647+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-13T15:32:37.648+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-13T15:32:37.715+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=migration_fit_data, task_id=create_dwh_table.recreate_dwh_address, run_id=manual__2024-12-13T15:31:35.788890+00:00, execution_date=20241213T153135, start_date=20241213T153231, end_date=20241213T153237
+[2024-12-13T15:32:37.908+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-13T15:32:37.935+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

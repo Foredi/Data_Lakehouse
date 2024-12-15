@@ -1,0 +1,10 @@
+program_semester_id,program_id,semester_name,total_credit,required_credit,elective_credit
+K18DS_1,K18DS,Học kỳ 1,11,11,0
+K18DS_2,K18DS,Học kỳ 2,12,9,3
+K18DS_3,K18DS,Học kỳ 3,19,16,3
+K18DS_4,K18DS,Học kỳ 4,20,15,5
+K18DS_5,K18DS,Học kỳ 5,18,15,3
+K18DS_6,K18DS,Học kỳ 6,20,14,6
+K18DS_7,K18DS,Học kỳ 7,16,10,6
+K18DS_8,K18DS,Học kỳ 8,15,12,3
+K18DS_9,K18DS,Học kỳ 9,13,13,0

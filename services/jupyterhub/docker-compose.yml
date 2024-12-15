@@ -1,0 +1,40 @@
+services:
+  jupyterhub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        JUPYTERHUB_VERSION: latest
+    restart: always
+    image: jupyterhub
+    container_name: jupyterhub
+    networks:
+      fit_network:
+    volumes:
+      # Tệp cấu hình JupyterHub
+      - "./jupyterhub_config.py:/srv/jupyterhub/jupyterhub_config.py:ro"
+      # Kết nối Docker socket để JupyterHub có thể tạo container người dùng
+      - "/var/run/docker.sock:/var/run/docker.sock:rw"
+      # Volume lưu trữ dữ liệu và cookie secrets của JupyterHub
+      - "jupyterhub-data:/data"
+      # Volume chia sẻ mạng Docker
+      - "shared-data:/home/jovyan/work"
+    ports:
+      - "8009:8000"
+    environment:
+      # Tên admin của JupyterHub
+      JUPYTERHUB_ADMIN: admin
+      # Tên mạng Docker để kết nối các container
+      DOCKER_NETWORK_NAME: fit_network
+      # Hình ảnh Docker mặc định cho người dùng
+      DOCKER_NOTEBOOK_IMAGE: quay.io/jupyter/base-notebook:latest
+      # Thư mục làm việc trong container người dùng
+      DOCKER_NOTEBOOK_DIR: /home/jovyan/work
+
+volumes:
+  jupyterhub-data:
+  shared-data:
+
+networks:
+  fit_network:
+    external: true

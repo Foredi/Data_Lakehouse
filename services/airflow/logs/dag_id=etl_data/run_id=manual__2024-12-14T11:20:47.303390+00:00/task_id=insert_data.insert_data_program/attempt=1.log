@@ -1,0 +1,20 @@
+[2024-12-14T11:20:51.615+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-14T11:20:51.863+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_data.insert_data.insert_data_program manual__2024-12-14T11:20:47.303390+00:00 [queued]>
+[2024-12-14T11:20:51.875+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_data.insert_data.insert_data_program manual__2024-12-14T11:20:47.303390+00:00 [queued]>
+[2024-12-14T11:20:51.875+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-14T11:20:51.903+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): insert_data.insert_data_program> on 2024-12-14 11:20:47.303390+00:00
+[2024-12-14T11:20:51.914+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=552) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-14T11:20:51.916+0000] {standard_task_runner.py:63} INFO - Started process 554 to run task
+[2024-12-14T11:20:51.917+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_data', 'insert_data.insert_data_program', 'manual__2024-12-14T11:20:47.303390+00:00', '--job-id', '114', '--raw', '--subdir', 'DAGS_FOLDER/etl_data.py', '--cfg-path', '/tmp/tmp63mdsgfr']
+[2024-12-14T11:20:51.921+0000] {standard_task_runner.py:91} INFO - Job 114: Subtask insert_data.insert_data_program
+[2024-12-14T11:20:51.987+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_data.insert_data.insert_data_program manual__2024-12-14T11:20:47.303390+00:00 [running]> on host 472b63b715e1
+[2024-12-14T11:20:52.198+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_data' AIRFLOW_CTX_TASK_ID='insert_data.insert_data_program' AIRFLOW_CTX_EXECUTION_DATE='2024-12-14T11:20:47.303390+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-14T11:20:47.303390+00:00'
+[2024-12-14T11:20:52.201+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-14T11:20:52.572+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-14T11:20:52.574+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-14T11:20:52.588+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_data, task_id=insert_data.insert_data_program, run_id=manual__2024-12-14T11:20:47.303390+00:00, execution_date=20241214T112047, start_date=20241214T112051, end_date=20241214T112052
+[2024-12-14T11:20:52.615+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-14T11:20:52.658+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-12-14T11:20:52.659+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,53 @@
+[2024-12-13T14:59:50.552+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-13T14:59:50.621+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: migration_fit_data.load_staging.create_staging_enrollment_fact manual__2024-12-13T14:59:21.060897+00:00 [queued]>
+[2024-12-13T14:59:50.666+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: migration_fit_data.load_staging.create_staging_enrollment_fact manual__2024-12-13T14:59:21.060897+00:00 [queued]>
+[2024-12-13T14:59:50.667+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-13T14:59:50.799+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_staging.create_staging_enrollment_fact> on 2024-12-13 14:59:21.060897+00:00
+[2024-12-13T14:59:50.819+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=2431) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-13T14:59:50.821+0000] {standard_task_runner.py:63} INFO - Started process 2466 to run task
+[2024-12-13T14:59:50.843+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'migration_fit_data', 'load_staging.create_staging_enrollment_fact', 'manual__2024-12-13T14:59:21.060897+00:00', '--job-id', '57', '--raw', '--subdir', 'DAGS_FOLDER/elt_migrate.py', '--cfg-path', '/tmp/tmp0hae97v4']
+[2024-12-13T14:59:50.860+0000] {standard_task_runner.py:91} INFO - Job 57: Subtask load_staging.create_staging_enrollment_fact
+[2024-12-13T14:59:51.040+0000] {task_command.py:426} INFO - Running <TaskInstance: migration_fit_data.load_staging.create_staging_enrollment_fact manual__2024-12-13T14:59:21.060897+00:00 [running]> on host cc53e3c9aaad
+[2024-12-13T14:59:51.265+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='migration_fit_data' AIRFLOW_CTX_TASK_ID='load_staging.create_staging_enrollment_fact' AIRFLOW_CTX_EXECUTION_DATE='2024-12-13T14:59:21.060897+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-13T14:59:21.060897+00:00'
+[2024-12-13T14:59:51.266+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-13T14:59:51.276+0000] {TSocket.py:145} INFO - Could not connect to ('172.19.0.29', 10000)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+[2024-12-13T14:59:51.278+0000] {TSocket.py:148} ERROR - Could not connect to any of [('172.19.0.29', 10000)]
+[2024-12-13T14:59:51.278+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-13T14:59:51.279+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/tasks/fit_task.py", line 57, in create_staging_table
+    connetion = hive.Connection(host='spark-thriftserver', port=10000)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pyhive/hive.py", line 269, in __init__
+    self._transport.open()
+  File "/home/airflow/.local/lib/python3.12/site-packages/thrift_sasl/__init__.py", line 74, in open
+    self._trans.open()
+  File "/home/airflow/.local/lib/python3.12/site-packages/thrift/transport/TSocket.py", line 149, in open
+    raise TTransportException(type=TTransportException.NOT_OPEN, message=msg)
+thrift.transport.TTransport.TTransportException: Could not connect to any of [('172.19.0.29', 10000)]
+[2024-12-13T14:59:51.295+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=migration_fit_data, task_id=load_staging.create_staging_enrollment_fact, run_id=manual__2024-12-13T14:59:21.060897+00:00, execution_date=20241213T145921, start_date=20241213T145950, end_date=20241213T145951
+[2024-12-13T14:59:51.324+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 57 for task load_staging.create_staging_enrollment_fact (Could not connect to any of [('172.19.0.29', 10000)]; 2466)
+[2024-12-13T14:59:51.388+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-12-13T14:59:51.481+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-13T14:59:51.485+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,20 @@
+[2024-12-13T14:58:46.649+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-13T14:58:46.862+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: migration_fit_schema.insert_data.insert_data_enroll_student manual__2024-12-13T14:58:16.226576+00:00 [queued]>
+[2024-12-13T14:58:46.870+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: migration_fit_schema.insert_data.insert_data_enroll_student manual__2024-12-13T14:58:16.226576+00:00 [queued]>
+[2024-12-13T14:58:46.871+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-13T14:58:46.882+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): insert_data.insert_data_enroll_student> on 2024-12-13 14:58:16.226576+00:00
+[2024-12-13T14:58:46.892+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=2346) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-13T14:58:46.894+0000] {standard_task_runner.py:63} INFO - Started process 2348 to run task
+[2024-12-13T14:58:46.899+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'migration_fit_schema', 'insert_data.insert_data_enroll_student', 'manual__2024-12-13T14:58:16.226576+00:00', '--job-id', '28', '--raw', '--subdir', 'DAGS_FOLDER/etl_migrate.py', '--cfg-path', '/tmp/tmpbu06_e06']
+[2024-12-13T14:58:46.902+0000] {standard_task_runner.py:91} INFO - Job 28: Subtask insert_data.insert_data_enroll_student
+[2024-12-13T14:58:46.960+0000] {task_command.py:426} INFO - Running <TaskInstance: migration_fit_schema.insert_data.insert_data_enroll_student manual__2024-12-13T14:58:16.226576+00:00 [running]> on host cc53e3c9aaad
+[2024-12-13T14:58:47.050+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='migration_fit_schema' AIRFLOW_CTX_TASK_ID='insert_data.insert_data_enroll_student' AIRFLOW_CTX_EXECUTION_DATE='2024-12-13T14:58:16.226576+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-13T14:58:16.226576+00:00'
+[2024-12-13T14:58:47.053+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-13T14:58:48.924+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-13T14:58:48.925+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-13T14:58:48.937+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=migration_fit_schema, task_id=insert_data.insert_data_enroll_student, run_id=manual__2024-12-13T14:58:16.226576+00:00, execution_date=20241213T145816, start_date=20241213T145846, end_date=20241213T145848
+[2024-12-13T14:58:48.997+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-13T14:58:49.033+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-12-13T14:58:49.034+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

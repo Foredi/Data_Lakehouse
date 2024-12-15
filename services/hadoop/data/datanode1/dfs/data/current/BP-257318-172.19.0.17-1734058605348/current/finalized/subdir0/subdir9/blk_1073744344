@@ -1,0 +1,87 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "92f5dad1-1ffa-42df-9f21-90a34ad47017",
+  "location" : "hdfs://namenode:9000/fit_warehouse/warehouse/address/*.snappy.parquet",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1734175156504,
+  "last-column-id" : 4,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "address_id",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 2,
+      "name" : "ward",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "district",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "city",
+      "required" : false,
+      "type" : "string"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "default",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 497099306074161690,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 497099306074161690,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 497099306074161690,
+    "timestamp-ms" : 1734175156504,
+    "summary" : {
+      "operation" : "overwrite",
+      "spark.app.id" : "app-20241214110853-0000",
+      "added-data-files" : "1",
+      "added-records" : "5337",
+      "added-files-size" : "66935",
+      "changed-partition-count" : "1",
+      "total-records" : "5337",
+      "total-files-size" : "66935",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "hdfs://namenode:9000/fit_warehouse/warehouse/address/*.snappy.parquet/metadata/snap-497099306074161690-1-ab40f215-94c7-4fbc-94ad-275b3c3d8924.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1734175156504,
+    "snapshot-id" : 497099306074161690
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1734175105697,
+    "metadata-file" : "hdfs://namenode:9000/fit_warehouse/warehouse/address/*.snappy.parquet/metadata/00000-7db159b7-86b9-4ef1-b097-e3c4fcd6ee50.metadata.json"
+  } ]
+}

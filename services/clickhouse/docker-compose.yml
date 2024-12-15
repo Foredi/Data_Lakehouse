@@ -1,0 +1,113 @@
+x-service-common: &service-common
+  networks:
+    fit_network:
+  deploy:
+    resources:
+      reservations:
+        memory: 1G # Set memory reservation (minimum guaranteed)
+      limits:
+        memory: 1G
+  restart: always
+
+services:
+  clickhouse-keeper-1:
+    <<: *service-common
+    image: 'clickhouse/clickhouse-keeper:23.11.1.2711-alpine'
+    user: '101:101'
+    container_name: clickhouse-keeper-1
+    volumes:
+      - ./config/keeper_config_1.xml:/etc/clickhouse-keeper/keeper_config.xml
+      - clickhouse-keeper-1:/var/lib/clickhouse/
+      - clickhouse-keeper-log-1:/var/log/clickhouse-keeper
+
+  clickhouse-keeper-2:
+    <<: *service-common
+    image: 'clickhouse/clickhouse-keeper:23.11.1.2711-alpine'
+    user: '101:101'
+    container_name: clickhouse-keeper-2
+    volumes:
+      - ./config/keeper_config_2.xml:/etc/clickhouse-keeper/keeper_config.xml
+      - clickhouse-keeper-2:/var/lib/clickhouse/
+      - clickhouse-keeper-log-2:/var/log/clickhouse-keeper
+
+  clickhouse-keeper-3:
+    <<: *service-common
+    image: 'clickhouse/clickhouse-keeper:23.11.1.2711-alpine'
+    user: '101:101'
+    container_name: clickhouse-keeper-3
+    volumes:
+      - ./config/keeper_config_3.xml:/etc/clickhouse-keeper/keeper_config.xml
+      - clickhouse-keeper-3:/var/lib/clickhouse/
+      - clickhouse-keeper-log-3:/var/log/clickhouse-keeper
+
+  clickhouse1:
+    <<: *service-common
+    container_name: clickhouse1
+    image: clickhouse/clickhouse-server:latest
+    environment:
+      - SHARD=1
+      - HOSTNAME=clickhouse1
+    ports:
+      - "8123:8123"  # HTTP interface
+      - "9009:9000"  # Native interface
+    volumes:
+      - ./config/config.xml:/etc/clickhouse-server/config.xml
+      - clickhouse1_data:/var/lib/clickhouse/
+
+  clickhouse2:
+    <<: *service-common
+    image: clickhouse/clickhouse-server:latest
+    container_name: clickhouse2
+    volumes:
+      - ./config/config.xml:/etc/clickhouse-server/config.xml
+      - clickhouse2_data:/var/lib/clickhouse/
+    environment:
+      - SHARD=2
+      - HOSTNAME=clickhouse2
+
+  clickhouse3:
+    <<: *service-common
+    image: clickhouse/clickhouse-server:latest
+    container_name: clickhouse3
+    volumes:
+      - ./config/config.xml:/etc/clickhouse-server/config.xml
+      - clickhouse3_data:/var/lib/clickhouse/
+    environment:
+      - SHARD=3
+      - HOSTNAME=clickhouse3
+
+  # Thêm dịch vụ Tabix
+  tabix:
+    <<: *service-common
+    image: spoonest/clickhouse-tabix-web-client:latest
+    container_name: tabix
+    ports:
+      - "8124:80"  # Map cổng 80 của container đến 8080 trên máy chủ
+    environment:
+      - CLICKHOUSE_HOST=clickhouse1  # Địa chỉ ClickHouse server
+      - CLICKHOUSE_PORT=8123          # Cổng HTTP của ClickHouse
+      - CLICKHOUSE_USER=default       # Tên người dùng ClickHouse
+    depends_on:
+      - clickhouse1
+      - clickhouse2
+      - clickhouse3
+    networks:
+      - fit_network
+
+volumes:
+  clickhouse1_data:
+  clickhouse2_data:
+  clickhouse3_data:
+  clickhouse4_data:
+  clickhouse5_data:
+  clickhouse6_data:
+  clickhouse-keeper-1:
+  clickhouse-keeper-log-1:
+  clickhouse-keeper-2:
+  clickhouse-keeper-log-2:
+  clickhouse-keeper-3:
+  clickhouse-keeper-log-3:
+
+networks:
+  fit_network:
+    external: true

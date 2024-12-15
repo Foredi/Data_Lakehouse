@@ -1,0 +1,425 @@
+[2024-12-14T11:12:04.898+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-14T11:12:05.115+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: migration_fit_schema.create_table.create_table manual__2024-12-14T11:12:03.380661+00:00 [queued]>
+[2024-12-14T11:12:05.127+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: migration_fit_schema.create_table.create_table manual__2024-12-14T11:12:03.380661+00:00 [queued]>
+[2024-12-14T11:12:05.127+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-14T11:12:05.142+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): create_table.create_table> on 2024-12-14 11:12:03.380661+00:00
+[2024-12-14T11:12:05.150+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=111) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-14T11:12:05.152+0000] {standard_task_runner.py:63} INFO - Started process 113 to run task
+[2024-12-14T11:12:05.152+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'migration_fit_schema', 'create_table.create_table', 'manual__2024-12-14T11:12:03.380661+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/etl_migrate.py', '--cfg-path', '/tmp/tmpqb_a6ci2']
+[2024-12-14T11:12:05.154+0000] {standard_task_runner.py:91} INFO - Job 5: Subtask create_table.create_table
+[2024-12-14T11:12:05.213+0000] {task_command.py:426} INFO - Running <TaskInstance: migration_fit_schema.create_table.create_table manual__2024-12-14T11:12:03.380661+00:00 [running]> on host 472b63b715e1
+[2024-12-14T11:12:05.318+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='migration_fit_schema' AIRFLOW_CTX_TASK_ID='create_table.create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-12-14T11:12:03.380661+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-14T11:12:03.380661+00:00'
+[2024-12-14T11:12:05.319+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-14T11:12:06.097+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-14T11:12:06.098+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.DuplicateTable: relation "employee" already exists
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/tasks/etl_task.py", line 39, in create_table
+    conn.execute(text(create_table_sql))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.DuplicateTable) relation "employee" already exists
+
+[SQL: CREATE TABLE employee (
+    employee_id SERIAL PRIMARY KEY,
+    employee_name TEXT,
+    date_of_birth TIMESTAMP,
+    nationality TEXT,
+    national_id TEXT,
+    insurance_id TEXT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE lecturer (
+    lecturer_id SERIAL PRIMARY KEY UNIQUE,
+    employee_id BIGINT,
+    academic_title VARCHAR(20),
+    academic_title_date TIMESTAMP,
+    degree VARCHAR(50),
+    degree_issue_date TIMESTAMP,
+    degree_issue_place VARCHAR(100),
+    major VARCHAR(100),
+    department VARCHAR(100),
+    number_of_exp BIGINT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (employee_id) REFERENCES employee (employee_id)
+);
+
+CREATE TABLE program (
+    program_id VARCHAR(10) PRIMARY KEY UNIQUE,
+    class_of VARCHAR(50),
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE program_semester (
+    program_semester_id VARCHAR(10) PRIMARY KEY UNIQUE,
+    program_id VARCHAR(10),
+    semester_name VARCHAR(20),
+    total_credit BIGINT,
+    required_credit BIGINT,
+    elective_credit BIGINT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (program_id) REFERENCES program (program_id)
+);
+
+CREATE TABLE course (
+    course_id BIGINT PRIMARY KEY UNIQUE,
+    course_name VARCHAR(200),
+    course_code BIGINT,
+    category VARCHAR(100),
+    total_credit BIGINT,
+    theory_credit BIGINT,
+    practice_credit BIGINT,
+    self_learning_credit BIGINT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE program_course (
+    program_semester_id VARCHAR(10),
+    course_id BIGINT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (program_semester_id, course_id),
+    FOREIGN KEY (program_semester_id) REFERENCES program_semester(program_semester_id),
+    FOREIGN KEY (course_id) REFERENCES course(course_id)
+);
+
+CREATE TABLE class (
+    class_id BIGINT PRIMARY KEY UNIQUE,
+    class_name VARCHAR(100),
+    class_type VARCHAR(20),
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE instruction_fact (
+    instruction_id SERIAL PRIMARY KEY UNIQUE,
+    program_semester_id VARCHAR(10),
+    course_id BIGINT,
+    class_id BIGINT,
+    is_required BOOL,
+    num_student BIGINT,
+    num_pass_student BIGINT,
+    num_fail_student BIGINT,
+    avg_final_score FLOAT,
+    instruction_status VARCHAR(100),
+    instruction_allocate TIMESTAMP,
+    instruction_time_start TIMESTAMP,
+    instruction_time_end TIMESTAMP,
+    last_modified_date TIMESTAMP,
+    etl_date TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (program_semester_id) REFERENCES program_semester (program_semester_id),
+    FOREIGN KEY (course_id) REFERENCES course (course_id),
+    FOREIGN KEY (class_id) REFERENCES class (class_id)
+);
+
+CREATE TABLE instruction_lecturer (
+    instruction_lecturer_id BIGINT PRIMARY KEY UNIQUE,
+    instruction_id BIGINT,
+    lecturer_id BIGINT,
+    lecturer_type VARCHAR(100),
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (instruction_id) REFERENCES instruction_fact (instruction_id),
+    FOREIGN KEY (lecturer_id) REFERENCES lecturer (lecturer_id)
+);
+
+CREATE TABLE address (
+    address_id SERIAL PRIMARY KEY UNIQUE,
+    ward VARCHAR(100),
+    district VARCHAR(100),
+    city VARCHAR(100),
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE student (
+    student_id VARCHAR(20) PRIMARY KEY UNIQUE,
+    student_name VARCHAR(100),
+    class_name VARCHAR(100),
+    edu_mail VARCHAR(100),
+    address_id BIGINT,
+    national_id BIGINT,
+    key_year VARCHAR(100),
+    gender VARCHAR(3),
+    student_dob TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (address_id) REFERENCES address (address_id)
+);
+
+CREATE TABLE enrollment_fact (
+    enrollment_id SERIAL PRIMARY KEY UNIQUE,
+    instruction_id BIGINT,
+    enrollment_start_time TIMESTAMP,
+    enrollment_end_time TIMESTAMP,
+    enrollment_status VARCHAR(100),
+    last_modified_date TIMESTAMP,
+    etl_date TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (instruction_id) REFERENCES instruction_fact (instruction_id)
+);
+
+CREATE TABLE enroll_student (
+    student_id VARCHAR(20),
+    enrollment_id BIGINT,
+    enrollment_time TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (student_id, enrollment_id),
+    FOREIGN KEY (student_id) REFERENCES student (student_id),
+    FOREIGN KEY (enrollment_id) REFERENCES enrollment_fact (enrollment_id)
+);
+
+CREATE TABLE score_fact (
+    score_id SERIAL PRIMARY KEY UNIQUE,
+    instruction_id BIGINT,
+    student_id VARCHAR(20),
+    final_score FLOAT,
+    final_score_4 FLOAT,
+    academic_rank VARCHAR(100),
+    is_practice BOOL,
+    last_modified_date TIMESTAMP,
+    etl_date TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (instruction_id) REFERENCES instruction_fact (instruction_id),
+    FOREIGN KEY (student_id) REFERENCES student (student_id)
+);
+
+CREATE TABLE score_detail (
+    score_detail_id SERIAL PRIMARY KEY UNIQUE,
+    score_id BIGINT,
+    regular_score_1 FLOAT,
+    regular_score_2 FLOAT,
+    regular_score_3 FLOAT,
+    mid_term_score FLOAT,
+    final_term_score FLOAT,
+    practice_score_1 FLOAT,
+    practice_score_2 FLOAT,
+    practice_score_3 FLOAT,
+    last_modified_date TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (score_id) REFERENCES score_fact (score_id)
+);]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+[2024-12-14T11:12:06.124+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=migration_fit_schema, task_id=create_table.create_table, run_id=manual__2024-12-14T11:12:03.380661+00:00, execution_date=20241214T111203, start_date=20241214T111205, end_date=20241214T111206
+[2024-12-14T11:12:06.142+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 5 for task create_table.create_table ((psycopg2.errors.DuplicateTable) relation "employee" already exists
+
+[SQL: CREATE TABLE employee (
+    employee_id SERIAL PRIMARY KEY,
+    employee_name TEXT,
+    date_of_birth TIMESTAMP,
+    nationality TEXT,
+    national_id TEXT,
+    insurance_id TEXT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE lecturer (
+    lecturer_id SERIAL PRIMARY KEY UNIQUE,
+    employee_id BIGINT,
+    academic_title VARCHAR(20),
+    academic_title_date TIMESTAMP,
+    degree VARCHAR(50),
+    degree_issue_date TIMESTAMP,
+    degree_issue_place VARCHAR(100),
+    major VARCHAR(100),
+    department VARCHAR(100),
+    number_of_exp BIGINT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (employee_id) REFERENCES employee (employee_id)
+);
+
+CREATE TABLE program (
+    program_id VARCHAR(10) PRIMARY KEY UNIQUE,
+    class_of VARCHAR(50),
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE program_semester (
+    program_semester_id VARCHAR(10) PRIMARY KEY UNIQUE,
+    program_id VARCHAR(10),
+    semester_name VARCHAR(20),
+    total_credit BIGINT,
+    required_credit BIGINT,
+    elective_credit BIGINT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (program_id) REFERENCES program (program_id)
+);
+
+CREATE TABLE course (
+    course_id BIGINT PRIMARY KEY UNIQUE,
+    course_name VARCHAR(200),
+    course_code BIGINT,
+    category VARCHAR(100),
+    total_credit BIGINT,
+    theory_credit BIGINT,
+    practice_credit BIGINT,
+    self_learning_credit BIGINT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE program_course (
+    program_semester_id VARCHAR(10),
+    course_id BIGINT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (program_semester_id, course_id),
+    FOREIGN KEY (program_semester_id) REFERENCES program_semester(program_semester_id),
+    FOREIGN KEY (course_id) REFERENCES course(course_id)
+);
+
+CREATE TABLE class (
+    class_id BIGINT PRIMARY KEY UNIQUE,
+    class_name VARCHAR(100),
+    class_type VARCHAR(20),
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE instruction_fact (
+    instruction_id SERIAL PRIMARY KEY UNIQUE,
+    program_semester_id VARCHAR(10),
+    course_id BIGINT,
+    class_id BIGINT,
+    is_required BOOL,
+    num_student BIGINT,
+    num_pass_student BIGINT,
+    num_fail_student BIGINT,
+    avg_final_score FLOAT,
+    instruction_status VARCHAR(100),
+    instruction_allocate TIMESTAMP,
+    instruction_time_start TIMESTAMP,
+    instruction_time_end TIMESTAMP,
+    last_modified_date TIMESTAMP,
+    etl_date TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (program_semester_id) REFERENCES program_semester (program_semester_id),
+    FOREIGN KEY (course_id) REFERENCES course (course_id),
+    FOREIGN KEY (class_id) REFERENCES class (class_id)
+);
+
+CREATE TABLE instruction_lecturer (
+    instruction_lecturer_id BIGINT PRIMARY KEY UNIQUE,
+    instruction_id BIGINT,
+    lecturer_id BIGINT,
+    lecturer_type VARCHAR(100),
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (instruction_id) REFERENCES instruction_fact (instruction_id),
+    FOREIGN KEY (lecturer_id) REFERENCES lecturer (lecturer_id)
+);
+
+CREATE TABLE address (
+    address_id SERIAL PRIMARY KEY UNIQUE,
+    ward VARCHAR(100),
+    district VARCHAR(100),
+    city VARCHAR(100),
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE student (
+    student_id VARCHAR(20) PRIMARY KEY UNIQUE,
+    student_name VARCHAR(100),
+    class_name VARCHAR(100),
+    edu_mail VARCHAR(100),
+    address_id BIGINT,
+    national_id BIGINT,
+    key_year VARCHAR(100),
+    gender VARCHAR(3),
+    student_dob TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (address_id) REFERENCES address (address_id)
+);
+
+CREATE TABLE enrollment_fact (
+    enrollment_id SERIAL PRIMARY KEY UNIQUE,
+    instruction_id BIGINT,
+    enrollment_start_time TIMESTAMP,
+    enrollment_end_time TIMESTAMP,
+    enrollment_status VARCHAR(100),
+    last_modified_date TIMESTAMP,
+    etl_date TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (instruction_id) REFERENCES instruction_fact (instruction_id)
+);
+
+CREATE TABLE enroll_student (
+    student_id VARCHAR(20),
+    enrollment_id BIGINT,
+    enrollment_time TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (student_id, enrollment_id),
+    FOREIGN KEY (student_id) REFERENCES student (student_id),
+    FOREIGN KEY (enrollment_id) REFERENCES enrollment_fact (enrollment_id)
+);
+
+CREATE TABLE score_fact (
+    score_id SERIAL PRIMARY KEY UNIQUE,
+    instruction_id BIGINT,
+    student_id VARCHAR(20),
+    final_score FLOAT,
+    final_score_4 FLOAT,
+    academic_rank VARCHAR(100),
+    is_practice BOOL,
+    last_modified_date TIMESTAMP,
+    etl_date TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (instruction_id) REFERENCES instruction_fact (instruction_id),
+    FOREIGN KEY (student_id) REFERENCES student (student_id)
+);
+
+CREATE TABLE score_detail (
+    score_detail_id SERIAL PRIMARY KEY UNIQUE,
+    score_id BIGINT,
+    regular_score_1 FLOAT,
+    regular_score_2 FLOAT,
+    regular_score_3 FLOAT,
+    mid_term_score FLOAT,
+    final_term_score FLOAT,
+    practice_score_1 FLOAT,
+    practice_score_2 FLOAT,
+    practice_score_3 FLOAT,
+    last_modified_date TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (score_id) REFERENCES score_fact (score_id)
+);]
+(Background on this error at: https://sqlalche.me/e/14/f405); 113)
+[2024-12-14T11:12:06.170+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-12-14T11:12:06.216+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-14T11:12:06.221+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

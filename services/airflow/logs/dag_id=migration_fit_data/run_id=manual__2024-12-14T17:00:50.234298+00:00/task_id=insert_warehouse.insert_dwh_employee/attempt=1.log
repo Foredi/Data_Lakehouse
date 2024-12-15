@@ -1,0 +1,33 @@
+[2024-12-14T17:02:19.296+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-14T17:02:19.812+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: migration_fit_data.insert_warehouse.insert_dwh_employee manual__2024-12-14T17:00:50.234298+00:00 [queued]>
+[2024-12-14T17:02:19.999+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: migration_fit_data.insert_warehouse.insert_dwh_employee manual__2024-12-14T17:00:50.234298+00:00 [queued]>
+[2024-12-14T17:02:20.013+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-14T17:02:20.144+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): insert_warehouse.insert_dwh_employee> on 2024-12-14 17:00:50.234298+00:00
+[2024-12-14T17:02:20.186+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=5469) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-14T17:02:20.191+0000] {standard_task_runner.py:63} INFO - Started process 5508 to run task
+[2024-12-14T17:02:20.193+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'migration_fit_data', 'insert_warehouse.insert_dwh_employee', 'manual__2024-12-14T17:00:50.234298+00:00', '--job-id', '340', '--raw', '--subdir', 'DAGS_FOLDER/elt_migrate.py', '--cfg-path', '/tmp/tmpdwkg7x_6']
+[2024-12-14T17:02:20.209+0000] {standard_task_runner.py:91} INFO - Job 340: Subtask insert_warehouse.insert_dwh_employee
+[2024-12-14T17:02:20.429+0000] {task_command.py:426} INFO - Running <TaskInstance: migration_fit_data.insert_warehouse.insert_dwh_employee manual__2024-12-14T17:00:50.234298+00:00 [running]> on host 472b63b715e1
+[2024-12-14T17:02:20.717+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='migration_fit_data' AIRFLOW_CTX_TASK_ID='insert_warehouse.insert_dwh_employee' AIRFLOW_CTX_EXECUTION_DATE='2024-12-14T17:00:50.234298+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-14T17:00:50.234298+00:00'
+[2024-12-14T17:02:20.719+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-14T17:02:20.786+0000] {hive.py:475} INFO - USE `default`
+[2024-12-14T17:02:20.885+0000] {hive.py:475} INFO - SELECT COUNT(*) FROM default.employee
+[2024-12-14T17:02:22.349+0000] {logging_mixin.py:188} INFO - SELECT COUNT(*) FROM default.employee --- 171
+[2024-12-14T17:02:22.353+0000] {hive.py:475} INFO - 
+            MERGE INTO iceberg.warehouse.employee t
+            USING default.employee s
+            ON t.employee_id=s.employee_id
+            WHEN MATCHED 
+                THEN UPDATE SET 
+                t.employee_id=s.employee_id,t.employee_name=s.employee_name,t.day_of_birth=s.day_of_birth,t.nationality=s.nationality,t.insurance_id=s.insurance_id
+            WHEN NOT MATCHED 
+                THEN INSERT *
+        
+[2024-12-14T17:02:27.076+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-14T17:02:27.076+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-14T17:02:27.093+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=migration_fit_data, task_id=insert_warehouse.insert_dwh_employee, run_id=manual__2024-12-14T17:00:50.234298+00:00, execution_date=20241214T170050, start_date=20241214T170219, end_date=20241214T170227
+[2024-12-14T17:02:27.144+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-14T17:02:27.242+0000] {taskinstance.py:3498} INFO - 6 downstream tasks scheduled from follow-on schedule check
+[2024-12-14T17:02:27.248+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
