@@ -1,0 +1,13 @@
+services:
+  cloudflare:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflare
+    restart: always
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    networks:
+      - fit_network
+      
+networks:
+    fit_network:
+        name: fit_network
+        external: true

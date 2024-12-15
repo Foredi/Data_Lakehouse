@@ -1,0 +1,18 @@
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer:latest
+    ports:
+      - 9006:9000
+    volumes:
+      - data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    networks:
+      fit_network:
+volumes:
+  data:
+
+networks:
+  fit_network:
+    external: true
