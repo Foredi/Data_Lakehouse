@@ -1,24 +1,24 @@
 # Data lakehouse
 
-### How-to-run will be uploaded later
+### Hướng dẫn chạy sẽ được cập nhật sau
 
-# First run:
-0. Install external dependencies:
-- Install JDK 23: https://download.oracle.com/java/23/latest/jdk-23.0.1_linux-aarch64_bin.tar.gz
-- Install Hadoop 3.4.0: https://dlcdn.apache.org/hadoop/common/hadoop-3.4.0/hadoop-3.4.0.tar.gz
+# Run:
+0. Cài đặt các phụ thuộc bên ngoài:
+- Cài đặt JDK 23: [https://download.oracle.com/java/23/latest/jdk-23.0.1_linux-aarch64_bin.tar.gz](https://download.oracle.com/java/23/latest/jdk-23.0.1_linux-aarch64_bin.tar.gz)  
+- Cài đặt Hadoop 3.4.0: [https://dlcdn.apache.org/hadoop/common/hadoop-3.4.0/hadoop-3.4.0.tar.gz](https://dlcdn.apache.org/hadoop/common/hadoop-3.4.0/hadoop-3.4.0.tar.gz)  
 
-Extract downloaded files to `/services/airflow/dependencies` and extract them
- 
-1. Change the variable IS_RESUME in ./services/metastore/docker-compose.yml to False
+Giải nén các tệp đã tải xuống vào thư mục `/services/airflow/dependencies`  
 
-2. Grant all permissions for HDFS
-```
-sudo mkdir -p ./services/hadoop/data
-sudo chmod  777 ./services/hadoop/data/*
-```
+1. Thay đổi giá trị biến **IS_RESUME** trong tệp `./services/metastore/docker-compose.yml` thành `False`
 
-1. Create docker network
-`docker network create default_net`
+2. Cấp quyền đầy đủ cho HDFS  
+```  
+sudo mkdir -p ./services/hadoop/data  
+sudo chmod 777 ./services/hadoop/data/*  
+```  
 
-1. Docker up
-`bash start_all_service.sh`
+3. Tạo mạng Docker  
+`docker network create fit_network`  
+
+4. Khởi động Docker  
+`bash start_all_service.sh`  
