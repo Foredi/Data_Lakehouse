@@ -1,0 +1,24 @@
+[2024-12-19T04:38:55.290+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-19T04:38:55.438+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: migration_fit_data.get_raw_data.extract_raw_program_semester manual__2024-12-19T04:38:13.996676+00:00 [queued]>
+[2024-12-19T04:38:55.504+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: migration_fit_data.get_raw_data.extract_raw_program_semester manual__2024-12-19T04:38:13.996676+00:00 [queued]>
+[2024-12-19T04:38:55.504+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-19T04:38:55.751+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): get_raw_data.extract_raw_program_semester> on 2024-12-19 04:38:13.996676+00:00
+[2024-12-19T04:38:55.773+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=8930) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-19T04:38:55.774+0000] {standard_task_runner.py:63} INFO - Started process 8984 to run task
+[2024-12-19T04:38:55.780+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'migration_fit_data', 'get_raw_data.extract_raw_program_semester', 'manual__2024-12-19T04:38:13.996676+00:00', '--job-id', '1325', '--raw', '--subdir', 'DAGS_FOLDER/elt_migrate.py', '--cfg-path', '/tmp/tmpzu0pq_16']
+[2024-12-19T04:38:55.789+0000] {standard_task_runner.py:91} INFO - Job 1325: Subtask get_raw_data.extract_raw_program_semester
+[2024-12-19T04:38:55.895+0000] {task_command.py:426} INFO - Running <TaskInstance: migration_fit_data.get_raw_data.extract_raw_program_semester manual__2024-12-19T04:38:13.996676+00:00 [running]> on host 33a17f71e955
+[2024-12-19T04:38:56.011+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='migration_fit_data' AIRFLOW_CTX_TASK_ID='get_raw_data.extract_raw_program_semester' AIRFLOW_CTX_EXECUTION_DATE='2024-12-19T04:38:13.996676+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-19T04:38:13.996676+00:00'
+[2024-12-19T04:38:56.013+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-19T04:38:57.525+0000] {__init__.py:412} INFO - DELETE /fit_warehouse/raw/program_semester/ recursive=True user.name=default namenode:9870
+[2024-12-19T04:38:57.561+0000] {__init__.py:412} INFO - GETFILESTATUS /fit_warehouse/raw/program_semester/ user.name=default namenode:9870
+[2024-12-19T04:38:57.590+0000] {__init__.py:412} INFO - MKDIRS /fit_warehouse/raw/program_semester/ user.name=default namenode:9870
+[2024-12-19T04:38:57.625+0000] {__init__.py:412} INFO - CREATE /fit_warehouse/raw/program_semester/program_semester_01.snappy.parquet overwrite=True async_=True user.name=default namenode:9870
+[2024-12-19T04:38:58.734+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-19T04:38:58.737+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-19T04:38:58.803+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=migration_fit_data, task_id=get_raw_data.extract_raw_program_semester, run_id=manual__2024-12-19T04:38:13.996676+00:00, execution_date=20241219T043813, start_date=20241219T043855, end_date=20241219T043858
+[2024-12-19T04:38:59.213+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-19T04:38:59.398+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-19T04:38:59.405+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

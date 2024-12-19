@@ -1,0 +1,1 @@
+[2024-12-16T14:44:57.120+0000] {task_context_logger.py:104} ERROR - Executor reports task instance <TaskInstance: migration_fit_data.create_dwh_table.recreate_dwh_instruction_lecturer manual__2024-12-16T14:42:18.441063+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?

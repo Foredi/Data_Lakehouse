@@ -1,0 +1,33 @@
+[2024-12-19T04:25:50.124+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-19T04:25:50.375+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ELT_dimention_data.insert_warehouse.insert_dwh_course manual__2024-12-19T04:24:45.064013+00:00 [queued]>
+[2024-12-19T04:25:50.576+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ELT_dimention_data.insert_warehouse.insert_dwh_course manual__2024-12-19T04:24:45.064013+00:00 [queued]>
+[2024-12-19T04:25:50.576+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-19T04:25:50.841+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): insert_warehouse.insert_dwh_course> on 2024-12-19 04:24:45.064013+00:00
+[2024-12-19T04:25:51.055+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=8406) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-19T04:25:51.056+0000] {standard_task_runner.py:63} INFO - Started process 8417 to run task
+[2024-12-19T04:25:51.053+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ELT_dimention_data', 'insert_warehouse.insert_dwh_course', 'manual__2024-12-19T04:24:45.064013+00:00', '--job-id', '1188', '--raw', '--subdir', 'DAGS_FOLDER/elt_dimention.py', '--cfg-path', '/tmp/tmplkxe_fzl']
+[2024-12-19T04:25:51.067+0000] {standard_task_runner.py:91} INFO - Job 1188: Subtask insert_warehouse.insert_dwh_course
+[2024-12-19T04:25:51.455+0000] {task_command.py:426} INFO - Running <TaskInstance: ELT_dimention_data.insert_warehouse.insert_dwh_course manual__2024-12-19T04:24:45.064013+00:00 [running]> on host 33a17f71e955
+[2024-12-19T04:25:53.249+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ELT_dimention_data' AIRFLOW_CTX_TASK_ID='insert_warehouse.insert_dwh_course' AIRFLOW_CTX_EXECUTION_DATE='2024-12-19T04:24:45.064013+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-19T04:24:45.064013+00:00'
+[2024-12-19T04:25:53.251+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-19T04:25:53.448+0000] {hive.py:475} INFO - USE `default`
+[2024-12-19T04:25:53.805+0000] {hive.py:475} INFO - SELECT COUNT(*) FROM default.course
+[2024-12-19T04:25:58.639+0000] {logging_mixin.py:188} INFO - SELECT COUNT(*) FROM default.course --- 85
+[2024-12-19T04:25:58.653+0000] {hive.py:475} INFO - 
+            MERGE INTO iceberg.warehouse.course t
+            USING default.course s
+            ON t.course_id=s.course_id
+            WHEN MATCHED 
+                THEN UPDATE SET 
+                t.course_id=s.course_id,t.course_name=s.course_name,t.course_code=s.course_code,t.category=s.category,t.total_credit=s.total_credit,t.theory_credit=s.theory_credit,t.practice_credit=s.practice_credit,t.self_learning_credit=s.self_learning_credit
+            WHEN NOT MATCHED 
+                THEN INSERT *
+        
+[2024-12-19T04:26:15.042+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-19T04:26:15.055+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-19T04:26:15.183+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ELT_dimention_data, task_id=insert_warehouse.insert_dwh_course, run_id=manual__2024-12-19T04:24:45.064013+00:00, execution_date=20241219T042445, start_date=20241219T042550, end_date=20241219T042615
+[2024-12-19T04:26:15.481+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-19T04:26:15.845+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-19T04:26:15.854+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

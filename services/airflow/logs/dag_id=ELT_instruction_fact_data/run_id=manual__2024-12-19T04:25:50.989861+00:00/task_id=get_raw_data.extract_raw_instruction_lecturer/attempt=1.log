@@ -1,0 +1,24 @@
+[2024-12-19T04:26:04.039+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-19T04:26:04.129+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ELT_instruction_fact_data.get_raw_data.extract_raw_instruction_lecturer manual__2024-12-19T04:25:50.989861+00:00 [queued]>
+[2024-12-19T04:26:04.158+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ELT_instruction_fact_data.get_raw_data.extract_raw_instruction_lecturer manual__2024-12-19T04:25:50.989861+00:00 [queued]>
+[2024-12-19T04:26:04.158+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-19T04:26:04.218+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): get_raw_data.extract_raw_instruction_lecturer> on 2024-12-19 04:25:50.989861+00:00
+[2024-12-19T04:26:04.259+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ELT_instruction_fact_data', 'get_raw_data.extract_raw_instruction_lecturer', 'manual__2024-12-19T04:25:50.989861+00:00', '--job-id', '1195', '--raw', '--subdir', 'DAGS_FOLDER/elt_instruction_fact.py', '--cfg-path', '/tmp/tmp1zood3h9']
+[2024-12-19T04:26:04.264+0000] {standard_task_runner.py:91} INFO - Job 1195: Subtask get_raw_data.extract_raw_instruction_lecturer
+[2024-12-19T04:26:04.250+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=8418) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-19T04:26:04.266+0000] {standard_task_runner.py:63} INFO - Started process 8428 to run task
+[2024-12-19T04:26:04.410+0000] {task_command.py:426} INFO - Running <TaskInstance: ELT_instruction_fact_data.get_raw_data.extract_raw_instruction_lecturer manual__2024-12-19T04:25:50.989861+00:00 [running]> on host 33a17f71e955
+[2024-12-19T04:26:04.709+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ELT_instruction_fact_data' AIRFLOW_CTX_TASK_ID='get_raw_data.extract_raw_instruction_lecturer' AIRFLOW_CTX_EXECUTION_DATE='2024-12-19T04:25:50.989861+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-19T04:25:50.989861+00:00'
+[2024-12-19T04:26:04.715+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-19T04:26:05.370+0000] {__init__.py:412} INFO - DELETE /fit_warehouse/raw/instruction_lecturer/ recursive=True user.name=default namenode:9870
+[2024-12-19T04:26:05.393+0000] {__init__.py:412} INFO - GETFILESTATUS /fit_warehouse/raw/instruction_lecturer/ user.name=default namenode:9870
+[2024-12-19T04:26:05.405+0000] {__init__.py:412} INFO - MKDIRS /fit_warehouse/raw/instruction_lecturer/ user.name=default namenode:9870
+[2024-12-19T04:26:05.447+0000] {__init__.py:412} INFO - CREATE /fit_warehouse/raw/instruction_lecturer/instruction_lecturer_01.snappy.parquet overwrite=True async_=True user.name=default namenode:9870
+[2024-12-19T04:26:05.574+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-19T04:26:05.575+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-19T04:26:05.610+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ELT_instruction_fact_data, task_id=get_raw_data.extract_raw_instruction_lecturer, run_id=manual__2024-12-19T04:25:50.989861+00:00, execution_date=20241219T042550, start_date=20241219T042604, end_date=20241219T042605
+[2024-12-19T04:26:05.697+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-19T04:26:05.779+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-19T04:26:05.784+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

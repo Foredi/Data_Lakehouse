@@ -1,0 +1,30 @@
+[2024-12-19T04:29:04.894+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-19T04:29:05.340+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ELT_dimention_data.load_staging.create_staging_program manual__2024-12-19T04:24:44.941262+00:00 [queued]>
+[2024-12-19T04:29:05.449+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ELT_dimention_data.load_staging.create_staging_program manual__2024-12-19T04:24:44.941262+00:00 [queued]>
+[2024-12-19T04:29:05.474+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-19T04:29:06.555+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_staging.create_staging_program> on 2024-12-19 04:24:44.941262+00:00
+[2024-12-19T04:29:06.842+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ELT_dimention_data', 'load_staging.create_staging_program', 'manual__2024-12-19T04:24:44.941262+00:00', '--job-id', '1238', '--raw', '--subdir', 'DAGS_FOLDER/elt_dimention.py', '--cfg-path', '/tmp/tmpa_0ougfe']
+[2024-12-19T04:29:06.917+0000] {standard_task_runner.py:91} INFO - Job 1238: Subtask load_staging.create_staging_program
+[2024-12-19T04:29:06.856+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=8570) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-19T04:29:06.973+0000] {standard_task_runner.py:63} INFO - Started process 8598 to run task
+[2024-12-19T04:29:08.058+0000] {task_command.py:426} INFO - Running <TaskInstance: ELT_dimention_data.load_staging.create_staging_program manual__2024-12-19T04:24:44.941262+00:00 [running]> on host 33a17f71e955
+[2024-12-19T04:29:09.503+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ELT_dimention_data' AIRFLOW_CTX_TASK_ID='load_staging.create_staging_program' AIRFLOW_CTX_EXECUTION_DATE='2024-12-19T04:24:44.941262+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-19T04:24:44.941262+00:00'
+[2024-12-19T04:29:09.514+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-19T04:29:09.568+0000] {hive.py:475} INFO - USE `default`
+[2024-12-19T04:29:10.192+0000] {hive.py:475} INFO - DROP TABLE IF EXISTS default.program
+[2024-12-19T04:29:14.658+0000] {hive.py:475} INFO - 
+        CREATE TABLE IF NOT EXISTS default.program (
+            program_id STRING,class_of STRING   
+        )   
+        STORED AS PARQUET
+        LOCATION '/fit_warehouse/raw/program/*.snappy.parquet'
+    
+[2024-12-19T04:29:15.438+0000] {hive.py:475} INFO - ANALYZE TABLE default.program COMPUTE STATISTICS
+[2024-12-19T04:29:20.074+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-19T04:29:20.074+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-19T04:29:20.140+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ELT_dimention_data, task_id=load_staging.create_staging_program, run_id=manual__2024-12-19T04:24:44.941262+00:00, execution_date=20241219T042444, start_date=20241219T042905, end_date=20241219T042920
+[2024-12-19T04:29:20.467+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-19T04:29:20.810+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-19T04:29:20.843+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

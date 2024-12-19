@@ -1,0 +1,70 @@
+[2024-12-19T04:32:24.261+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-19T04:32:24.495+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ELT_instruction_fact_data.aggregate_warehouse.aggregate_course_performance manual__2024-12-19T04:31:53.404189+00:00 [queued]>
+[2024-12-19T04:32:24.606+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ELT_instruction_fact_data.aggregate_warehouse.aggregate_course_performance manual__2024-12-19T04:31:53.404189+00:00 [queued]>
+[2024-12-19T04:32:24.612+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-19T04:32:24.751+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): aggregate_warehouse.aggregate_course_performance> on 2024-12-19 04:31:53.404189+00:00
+[2024-12-19T04:32:24.802+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=8774) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-19T04:32:24.813+0000] {standard_task_runner.py:63} INFO - Started process 8786 to run task
+[2024-12-19T04:32:24.829+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ELT_instruction_fact_data', 'aggregate_warehouse.aggregate_course_performance', 'manual__2024-12-19T04:31:53.404189+00:00', '--job-id', '1290', '--raw', '--subdir', 'DAGS_FOLDER/elt_instruction_fact.py', '--cfg-path', '/tmp/tmp7jly7zuy']
+[2024-12-19T04:32:24.848+0000] {standard_task_runner.py:91} INFO - Job 1290: Subtask aggregate_warehouse.aggregate_course_performance
+[2024-12-19T04:32:25.152+0000] {task_command.py:426} INFO - Running <TaskInstance: ELT_instruction_fact_data.aggregate_warehouse.aggregate_course_performance manual__2024-12-19T04:31:53.404189+00:00 [running]> on host 33a17f71e955
+[2024-12-19T04:32:25.628+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ELT_instruction_fact_data' AIRFLOW_CTX_TASK_ID='aggregate_warehouse.aggregate_course_performance' AIRFLOW_CTX_EXECUTION_DATE='2024-12-19T04:31:53.404189+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-19T04:31:53.404189+00:00'
+[2024-12-19T04:32:25.630+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-19T04:32:25.733+0000] {hive.py:475} INFO - USE `default`
+[2024-12-19T04:32:25.889+0000] {hive.py:475} INFO - CREATE NAMESPACE IF NOT EXISTS iceberg.aggr_warehouse
+[2024-12-19T04:32:26.166+0000] {hive.py:475} INFO - DROP TABLE IF EXISTS iceberg.aggr_warehouse.course_performance
+[2024-12-19T04:32:26.703+0000] {hive.py:475} INFO - 
+    CREATE OR REPLACE TABLE iceberg.aggr_warehouse.course_performance
+    USING parquet
+    AS
+    WITH unique_scores AS (
+        SELECT
+            c.course_code,
+            c.course_name,
+            ps.semester_name,
+            sf.student_id,
+            sf.final_score
+        FROM
+            iceberg.warehouse.course c
+        JOIN iceberg.warehouse.instruction_fact inf 
+            ON c.course_id = inf.course_id
+        JOIN iceberg.warehouse.program_semester ps 
+            ON inf.program_semester_id = ps.program_semester_id
+        JOIN iceberg.warehouse.score_fact sf 
+            ON sf.instruction_id = inf.instruction_id
+        WHERE 
+            inf.instruction_status = 'completed'
+        GROUP BY
+            c.course_code, c.course_name, ps.semester_name, sf.student_id, sf.final_score
+    )
+    SELECT
+        course_code,
+        course_name,
+        semester_name,
+        COUNT (student_id) AS num_students_enrolled,
+        SUM(CASE WHEN final_score >= 4 THEN 1 ELSE 0 END) AS num_students_passed,
+        (SUM(CASE WHEN final_score >= 4 THEN 1 ELSE 0 END) * 100.0) / COUNT(student_id) AS pass_rate,
+        AVG(final_score) AS average_final_score
+    FROM
+        unique_scores
+    GROUP BY
+        course_code, course_name, semester_name;
+    
+[2024-12-19T04:32:38.758+0000] {__init__.py:412} INFO - DELETE /user/hive/warehouse/aggr_warehouse.db/course_performance_parquet recursive=True user.name=default namenode:9870
+[2024-12-19T04:32:38.847+0000] {hive.py:475} INFO - 
+        DROP TABLE IF EXISTS spark_catalog.aggr_warehouse.course_performance_parquet
+    
+[2024-12-19T04:32:39.419+0000] {hive.py:475} INFO - 
+        CREATE TABLE spark_catalog.aggr_warehouse.course_performance_parquet
+        USING parquet
+        AS
+        SELECT * FROM iceberg.aggr_warehouse.course_performance
+    
+[2024-12-19T04:32:41.645+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-19T04:32:41.646+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-19T04:32:41.674+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ELT_instruction_fact_data, task_id=aggregate_warehouse.aggregate_course_performance, run_id=manual__2024-12-19T04:31:53.404189+00:00, execution_date=20241219T043153, start_date=20241219T043224, end_date=20241219T043241
+[2024-12-19T04:32:41.762+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-19T04:32:41.851+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-19T04:32:41.853+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

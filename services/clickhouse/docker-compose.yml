@@ -1,12 +1,13 @@
-x-service-common: &service-common
+x-service-common: 
+  &service-common
   networks:
     fit_network:
   deploy:
     resources:
       reservations:
-        memory: 1G # Set memory reservation (minimum guaranteed)
+        memory: 2G # Set memory reservation (minimum guaranteed)
       limits:
-        memory: 1G
+        memory: 4G
   restart: always
 
 services:

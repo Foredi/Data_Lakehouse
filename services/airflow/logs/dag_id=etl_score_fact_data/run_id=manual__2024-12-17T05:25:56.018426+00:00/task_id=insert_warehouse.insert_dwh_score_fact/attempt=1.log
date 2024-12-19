@@ -1,0 +1,33 @@
+[2024-12-17T05:26:11.031+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-17T05:26:11.089+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_score_fact_data.insert_warehouse.insert_dwh_score_fact manual__2024-12-17T05:25:56.018426+00:00 [queued]>
+[2024-12-17T05:26:11.130+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_score_fact_data.insert_warehouse.insert_dwh_score_fact manual__2024-12-17T05:25:56.018426+00:00 [queued]>
+[2024-12-17T05:26:11.130+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-17T05:26:11.177+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): insert_warehouse.insert_dwh_score_fact> on 2024-12-17 05:25:56.018426+00:00
+[2024-12-17T05:26:11.206+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=38110) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-17T05:26:11.210+0000] {standard_task_runner.py:63} INFO - Started process 38114 to run task
+[2024-12-17T05:26:11.209+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_score_fact_data', 'insert_warehouse.insert_dwh_score_fact', 'manual__2024-12-17T05:25:56.018426+00:00', '--job-id', '887', '--raw', '--subdir', 'DAGS_FOLDER/elt_score_fact.py', '--cfg-path', '/tmp/tmpncbjm2af']
+[2024-12-17T05:26:11.215+0000] {standard_task_runner.py:91} INFO - Job 887: Subtask insert_warehouse.insert_dwh_score_fact
+[2024-12-17T05:26:11.393+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_score_fact_data.insert_warehouse.insert_dwh_score_fact manual__2024-12-17T05:25:56.018426+00:00 [running]> on host 2f4e9c743994
+[2024-12-17T05:26:11.873+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_score_fact_data' AIRFLOW_CTX_TASK_ID='insert_warehouse.insert_dwh_score_fact' AIRFLOW_CTX_EXECUTION_DATE='2024-12-17T05:25:56.018426+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-17T05:25:56.018426+00:00'
+[2024-12-17T05:26:11.874+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-17T05:26:11.934+0000] {hive.py:475} INFO - USE `default`
+[2024-12-17T05:26:12.027+0000] {hive.py:475} INFO - SELECT COUNT(*) FROM default.score_fact
+[2024-12-17T05:26:13.136+0000] {logging_mixin.py:188} INFO - SELECT COUNT(*) FROM default.score_fact --- 20754
+[2024-12-17T05:26:13.143+0000] {hive.py:475} INFO - 
+            MERGE INTO iceberg.warehouse.score_fact t
+            USING default.score_fact s
+            ON t.score_id=s.score_id
+            WHEN MATCHED 
+                THEN UPDATE SET 
+                t.score_id=s.score_id,t.instruction_id=s.instruction_id,t.student_id=s.student_id,t.final_score=s.final_score,t.final_score_4=s.final_score_4,t.academic_rank=s.academic_rank,t.is_practice=s.is_practice,t.last_modified_date=s.last_modified_date,t.etl_date=s.etl_date
+            WHEN NOT MATCHED 
+                THEN INSERT *
+        
+[2024-12-17T05:26:21.131+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-17T05:26:21.133+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-17T05:26:21.150+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_score_fact_data, task_id=insert_warehouse.insert_dwh_score_fact, run_id=manual__2024-12-17T05:25:56.018426+00:00, execution_date=20241217T052556, start_date=20241217T052611, end_date=20241217T052621
+[2024-12-17T05:26:21.199+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-17T05:26:21.250+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-17T05:26:21.251+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

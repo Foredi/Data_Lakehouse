@@ -1,0 +1,1 @@
+[2024-12-18T08:02:29.299+0000] {task_context_logger.py:104} ERROR - Executor reports task instance <TaskInstance: migration_fit_data.load_staging.create_staging_score_detail manual__2024-12-18T08:01:04.827041+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?

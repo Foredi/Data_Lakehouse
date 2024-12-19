@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: python_app
+    volumes:
+      - ./code:/opt/code
+      - ./requirements.txt:/opt/requirements.txt
+    working_dir: /opt/code
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: uvicorn app:app --host 0.0.0.0 --port 8010
+    networks:
+      - fit_network
+    ports:
+      - "8010:8010"  # Nếu ứng dụng của bạn chạy cổng HTTP, sửa đổi theo nhu cầu.
+
+networks:
+  fit_network:
+    external: true

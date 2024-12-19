@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tải Lên Tệp Tin</title>
+    <style>
+        /* Reset một số thuộc tính mặc định */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333333;
+            text-align: center;
+        }
+
+        .dropzone {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            border: 2px dashed #4A90E2;
+            border-radius: 15px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            transition: background-color 0.3s, border-color 0.3s;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropzone.dragover {
+            background-color: #e6f7ff;
+            border-color: #1c7ed6;
+        }
+
+        .dropzone p {
+            font-size: 18px;
+            color: #555555;
+            text-align: center;
+        }
+
+        .dropzone::before {
+            content: "\2195"; /* Mã Unicode cho biểu tượng kéo thả */
+            font-size: 50px;
+            color: #4A90E2;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        #file-list {
+            max-width: 600px;
+            width: 100%;
+            margin: 20px auto;
+            list-style: none;
+            padding: 0;
+        }
+
+        #file-list li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        #file-list li:hover {
+            background-color: #f1faff;
+            transform: translateY(-2px);
+        }
+
+        .file-name {
+            color: #333333;
+            font-size: 16px;
+            word-break: break-all;
+        }
+
+        .remove-file {
+            background: none;
+            border: none;
+            color: #ff4d4f;
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .remove-file:hover {
+            color: #d9363e;
+        }
+
+        #submit-button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 30px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #4A90E2;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #submit-button:hover {
+            background-color: #1c7ed6;
+            transform: translateY(-2px);
+        }
+
+        /* Thông báo */
+        .alert {
+            max-width: 600px;
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 16px;
+            display: none;
+        }
+
+        .alert.success {
+            background-color: #f6ffed;
+            border: 1px solid #b7eb8f;
+            color: #389e0d;
+        }
+
+        .alert.error {
+            background-color: #fff1f0;
+            border: 1px solid #ffa39e;
+            color: #cf1322;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .dropzone {
+                height: 250px;
+            }
+
+            .dropzone::before {
+                font-size: 40px;
+                top: 10px;
+                right: 10px;
+            }
+
+            #submit-button {
+                width: 100%;
+                padding: 12px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tải Lên Tệp Tin</h1>
+
+    <div class="dropzone" id="dropzone">
+        <p>Kéo và thả tệp tin vào đây hoặc nhấp để chọn tệp</p>
+        <input type="file" id="file-input" multiple>
+    </div>
+
+    <ul id="file-list"></ul>
+    <button id="submit-button">Tải Lên</button>
+
+    <!-- Thông báo -->
+    <div class="alert success" id="success-alert">
+        Tệp tin đã được tải lên thành công!
+    </div>
+    <div class="alert error" id="error-alert">
+        Đã xảy ra lỗi khi tải lên tệp tin.
+    </div>
+
+    <script>
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('file-input');
+        const fileList = document.getElementById('file-list');
+        const submitButton = document.getElementById('submit-button');
+        const successAlert = document.getElementById('success-alert');
+        const errorAlert = document.getElementById('error-alert');
+
+        let filesToUpload = [];
+
+        // Mở hộp thoại chọn tệp khi nhấp vào dropzone
+        dropzone.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // Xử lý khi người dùng chọn tệp qua hộp thoại
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        // Xử lý kéo thả
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('dragover');
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        // Hàm xử lý tệp tin
+        function handleFiles(files) {
+            for (let file of files) {
+                if (!filesToUpload.some(f => f.name === file.name && f.size === file.size)) {
+                    filesToUpload.push(file);
+                    const li = document.createElement('li');
+
+                    const fileName = document.createElement('span');
+                    fileName.classList.add('file-name');
+                    fileName.textContent = file.name;
+
+                    const removeBtn = document.createElement('button');
+                    removeBtn.classList.add('remove-file');
+                    removeBtn.innerHTML = '&times;';
+                    removeBtn.addEventListener('click', () => {
+                        fileList.removeChild(li);
+                        filesToUpload = filesToUpload.filter(f => f !== file);
+                    });
+
+                    li.appendChild(fileName);
+                    li.appendChild(removeBtn);
+                    fileList.appendChild(li);
+                }
+            }
+        }
+
+        // Hàm tải lên tệp tin
+        submitButton.addEventListener('click', () => {
+            if (filesToUpload.length === 0) {
+                showAlert('error', 'Vui lòng chọn ít nhất một tệp tin để tải lên.');
+                return;
+            }
+
+            const formData = new FormData();
+            filesToUpload.forEach(file => {
+                formData.append('files', file);
+            });
+
+            // Hiển thị trạng thái đang tải lên
+            submitButton.disabled = true;
+            submitButton.textContent = 'Đang tải lên...';
+
+            fetch('/upload/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => { throw err; });
+                }
+                return response.json();
+            })
+            .then(data => {
+                showAlert('success', data.message);
+                // Reset danh sách tệp tin sau khi tải lên thành công
+                filesToUpload = [];
+                fileList.innerHTML = '';
+            })
+            .catch(error => {
+                console.error('Lỗi:', error);
+                const errorMsg = error.detail || 'Đã xảy ra lỗi khi tải lên tệp tin.';
+                showAlert('error', errorMsg);
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Tải Lên';
+            });
+        });
+
+        // Hàm hiển thị thông báo
+        function showAlert(type, message) {
+            if (type === 'success') {
+                successAlert.textContent = message;
+                successAlert.style.display = 'block';
+                errorAlert.style.display = 'none';
+            } else {
+                errorAlert.textContent = message;
+                errorAlert.style.display = 'block';
+                successAlert.style.display = 'none';
+            }
+
+            // Tự động ẩn thông báo sau 5 giây
+            setTimeout(() => {
+                successAlert.style.display = 'none';
+                errorAlert.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+
+</body>
+</html>

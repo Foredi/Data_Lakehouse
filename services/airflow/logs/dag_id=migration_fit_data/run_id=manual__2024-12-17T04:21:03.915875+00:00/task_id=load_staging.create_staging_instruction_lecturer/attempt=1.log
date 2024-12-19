@@ -1,0 +1,29 @@
+[2024-12-17T04:22:15.568+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-17T04:22:16.205+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: migration_fit_data.load_staging.create_staging_instruction_lecturer manual__2024-12-17T04:21:03.915875+00:00 [queued]>
+[2024-12-17T04:22:16.373+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: migration_fit_data.load_staging.create_staging_instruction_lecturer manual__2024-12-17T04:21:03.915875+00:00 [queued]>
+[2024-12-17T04:22:16.375+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-17T04:22:16.586+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_staging.create_staging_instruction_lecturer> on 2024-12-17 04:21:03.915875+00:00
+[2024-12-17T04:22:16.686+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=37156) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-17T04:22:16.698+0000] {standard_task_runner.py:63} INFO - Started process 37195 to run task
+[2024-12-17T04:22:16.691+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'migration_fit_data', 'load_staging.create_staging_instruction_lecturer', 'manual__2024-12-17T04:21:03.915875+00:00', '--job-id', '840', '--raw', '--subdir', 'DAGS_FOLDER/elt_migrate.py', '--cfg-path', '/tmp/tmp4u4lwje7']
+[2024-12-17T04:22:16.737+0000] {standard_task_runner.py:91} INFO - Job 840: Subtask load_staging.create_staging_instruction_lecturer
+[2024-12-17T04:22:16.925+0000] {task_command.py:426} INFO - Running <TaskInstance: migration_fit_data.load_staging.create_staging_instruction_lecturer manual__2024-12-17T04:21:03.915875+00:00 [running]> on host 2f4e9c743994
+[2024-12-17T04:22:17.392+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='migration_fit_data' AIRFLOW_CTX_TASK_ID='load_staging.create_staging_instruction_lecturer' AIRFLOW_CTX_EXECUTION_DATE='2024-12-17T04:21:03.915875+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-17T04:21:03.915875+00:00'
+[2024-12-17T04:22:17.397+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-17T04:22:17.556+0000] {hive.py:475} INFO - USE `default`
+[2024-12-17T04:22:18.606+0000] {hive.py:475} INFO - DROP TABLE IF EXISTS default.instruction_lecturer
+[2024-12-17T04:22:19.797+0000] {hive.py:475} INFO - 
+        CREATE TABLE IF NOT EXISTS default.instruction_lecturer (
+            instruction_lecturer_id BIGINT,instruction_id BIGINT,lecturer_id BIGINT,lecturer_type STRING   
+        )   
+        STORED AS PARQUET
+        LOCATION '/fit_warehouse/raw/instruction_lecturer/*.snappy.parquet'
+    
+[2024-12-17T04:22:21.857+0000] {hive.py:475} INFO - ANALYZE TABLE default.instruction_lecturer COMPUTE STATISTICS
+[2024-12-17T04:22:26.261+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-17T04:22:26.262+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-17T04:22:26.324+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=migration_fit_data, task_id=load_staging.create_staging_instruction_lecturer, run_id=manual__2024-12-17T04:21:03.915875+00:00, execution_date=20241217T042103, start_date=20241217T042216, end_date=20241217T042226
+[2024-12-17T04:22:26.399+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-17T04:22:26.451+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

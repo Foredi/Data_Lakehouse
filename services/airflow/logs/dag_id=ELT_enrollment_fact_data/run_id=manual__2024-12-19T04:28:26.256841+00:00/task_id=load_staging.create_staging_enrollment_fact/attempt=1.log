@@ -1,0 +1,29 @@
+[2024-12-19T04:29:47.372+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-19T04:29:47.507+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ELT_enrollment_fact_data.load_staging.create_staging_enrollment_fact manual__2024-12-19T04:28:26.256841+00:00 [queued]>
+[2024-12-19T04:29:47.557+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ELT_enrollment_fact_data.load_staging.create_staging_enrollment_fact manual__2024-12-19T04:28:26.256841+00:00 [queued]>
+[2024-12-19T04:29:47.568+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-19T04:29:47.716+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_staging.create_staging_enrollment_fact> on 2024-12-19 04:28:26.256841+00:00
+[2024-12-19T04:29:47.784+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=8633) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-19T04:29:47.785+0000] {standard_task_runner.py:63} INFO - Started process 8645 to run task
+[2024-12-19T04:29:47.785+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ELT_enrollment_fact_data', 'load_staging.create_staging_enrollment_fact', 'manual__2024-12-19T04:28:26.256841+00:00', '--job-id', '1252', '--raw', '--subdir', 'DAGS_FOLDER/elt_enrollment_fact.py', '--cfg-path', '/tmp/tmpchg5mqlb']
+[2024-12-19T04:29:47.796+0000] {standard_task_runner.py:91} INFO - Job 1252: Subtask load_staging.create_staging_enrollment_fact
+[2024-12-19T04:29:48.110+0000] {task_command.py:426} INFO - Running <TaskInstance: ELT_enrollment_fact_data.load_staging.create_staging_enrollment_fact manual__2024-12-19T04:28:26.256841+00:00 [running]> on host 33a17f71e955
+[2024-12-19T04:29:48.541+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ELT_enrollment_fact_data' AIRFLOW_CTX_TASK_ID='load_staging.create_staging_enrollment_fact' AIRFLOW_CTX_EXECUTION_DATE='2024-12-19T04:28:26.256841+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-19T04:28:26.256841+00:00'
+[2024-12-19T04:29:48.545+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-19T04:29:48.570+0000] {hive.py:475} INFO - USE `default`
+[2024-12-19T04:29:48.625+0000] {hive.py:475} INFO - DROP TABLE IF EXISTS default.enrollment_fact
+[2024-12-19T04:29:48.842+0000] {hive.py:475} INFO - 
+        CREATE TABLE IF NOT EXISTS default.enrollment_fact (
+            enrollment_id BIGINT,instruction_id BIGINT,enrollment_start_time TIMESTAMP,enrollment_end_time TIMESTAMP,enrollment_class STRING,enrollment_status STRING,last_modified_date TIMESTAMP,etl_date TIMESTAMP   
+        )   
+        STORED AS PARQUET
+        LOCATION '/fit_warehouse/raw/enrollment_fact/*.snappy.parquet'
+    
+[2024-12-19T04:29:49.135+0000] {hive.py:475} INFO - ANALYZE TABLE default.enrollment_fact COMPUTE STATISTICS
+[2024-12-19T04:29:50.937+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-19T04:29:50.938+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-19T04:29:51.110+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ELT_enrollment_fact_data, task_id=load_staging.create_staging_enrollment_fact, run_id=manual__2024-12-19T04:28:26.256841+00:00, execution_date=20241219T042826, start_date=20241219T042947, end_date=20241219T042951
+[2024-12-19T04:29:51.469+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-19T04:29:51.595+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

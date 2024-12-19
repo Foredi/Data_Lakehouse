@@ -1,6 +1,13 @@
 x-service-common:
   &service-common
+  deploy:
+    resources:
+      reservations:
+        memory: 2G # Set memory reservation (minimum guaranteed)
+      limits:
+        memory: 4G
   image: spark:3.5.0
+  user: root
   networks:
     fit_network:
   restart: on-failure:3

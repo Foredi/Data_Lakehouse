@@ -1,0 +1,19 @@
+[2024-12-17T05:56:15.814+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-17T05:56:16.013+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_score_fact_data.load_to_clickhouse.load_clickhouse_lecturer_performance manual__2024-12-17T05:55:15.736211+00:00 [queued]>
+[2024-12-17T05:56:16.101+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_score_fact_data.load_to_clickhouse.load_clickhouse_lecturer_performance manual__2024-12-17T05:55:15.736211+00:00 [queued]>
+[2024-12-17T05:56:16.102+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-17T05:56:16.203+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_to_clickhouse.load_clickhouse_lecturer_performance> on 2024-12-17 05:55:15.736211+00:00
+[2024-12-17T05:56:16.250+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=38747) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-17T05:56:16.262+0000] {standard_task_runner.py:63} INFO - Started process 38764 to run task
+[2024-12-17T05:56:16.263+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_score_fact_data', 'load_to_clickhouse.load_clickhouse_lecturer_performance', 'manual__2024-12-17T05:55:15.736211+00:00', '--job-id', '972', '--raw', '--subdir', 'DAGS_FOLDER/elt_score_fact.py', '--cfg-path', '/tmp/tmp0wr8bx49']
+[2024-12-17T05:56:16.268+0000] {standard_task_runner.py:91} INFO - Job 972: Subtask load_to_clickhouse.load_clickhouse_lecturer_performance
+[2024-12-17T05:56:16.482+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_score_fact_data.load_to_clickhouse.load_clickhouse_lecturer_performance manual__2024-12-17T05:55:15.736211+00:00 [running]> on host 2f4e9c743994
+[2024-12-17T05:56:17.367+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_score_fact_data' AIRFLOW_CTX_TASK_ID='load_to_clickhouse.load_clickhouse_lecturer_performance' AIRFLOW_CTX_EXECUTION_DATE='2024-12-17T05:55:15.736211+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-17T05:55:15.736211+00:00'
+[2024-12-17T05:56:17.383+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-17T05:56:17.758+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-17T05:56:17.759+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-17T05:56:17.795+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_score_fact_data, task_id=load_to_clickhouse.load_clickhouse_lecturer_performance, run_id=manual__2024-12-17T05:55:15.736211+00:00, execution_date=20241217T055515, start_date=20241217T055616, end_date=20241217T055617
+[2024-12-17T05:56:17.998+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-17T05:56:18.067+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

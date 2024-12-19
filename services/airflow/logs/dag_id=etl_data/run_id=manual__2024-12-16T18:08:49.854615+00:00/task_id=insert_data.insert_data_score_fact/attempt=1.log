@@ -1,0 +1,22 @@
+[2024-12-16T18:09:15.347+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-16T18:09:15.553+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_data.insert_data.insert_data_score_fact manual__2024-12-16T18:08:49.854615+00:00 [queued]>
+[2024-12-16T18:09:15.564+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_data.insert_data.insert_data_score_fact manual__2024-12-16T18:08:49.854615+00:00 [queued]>
+[2024-12-16T18:09:15.564+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-16T18:09:15.574+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): insert_data.insert_data_score_fact> on 2024-12-16 18:08:49.854615+00:00
+[2024-12-16T18:09:15.585+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=29301) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-16T18:09:15.588+0000] {standard_task_runner.py:63} INFO - Started process 29303 to run task
+[2024-12-16T18:09:15.589+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_data', 'insert_data.insert_data_score_fact', 'manual__2024-12-16T18:08:49.854615+00:00', '--job-id', '732', '--raw', '--subdir', 'DAGS_FOLDER/etl_data.py', '--cfg-path', '/tmp/tmpl8m_dl95']
+[2024-12-16T18:09:15.592+0000] {standard_task_runner.py:91} INFO - Job 732: Subtask insert_data.insert_data_score_fact
+[2024-12-16T18:09:15.642+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_data.insert_data.insert_data_score_fact manual__2024-12-16T18:08:49.854615+00:00 [running]> on host 2f4e9c743994
+[2024-12-16T18:09:15.756+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_data' AIRFLOW_CTX_TASK_ID='insert_data.insert_data_score_fact' AIRFLOW_CTX_EXECUTION_DATE='2024-12-16T18:08:49.854615+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-16T18:08:49.854615+00:00'
+[2024-12-16T18:09:15.757+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-16T18:09:16.637+0000] {__init__.py:412} INFO - GETFILESTATUS /data/raw/score_fact/ user.name=default namenode:9870
+[2024-12-16T18:09:16.649+0000] {__init__.py:412} INFO - CREATE /data/raw/score_fact/score_fact_1734372556.csv overwrite=True async_=True user.name=default namenode:9870
+[2024-12-16T18:09:16.694+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-16T18:09:16.695+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-16T18:09:16.711+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_data, task_id=insert_data.insert_data_score_fact, run_id=manual__2024-12-16T18:08:49.854615+00:00, execution_date=20241216T180849, start_date=20241216T180915, end_date=20241216T180916
+[2024-12-16T18:09:16.778+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-16T18:09:16.828+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-12-16T18:09:16.830+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

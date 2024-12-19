@@ -33,7 +33,7 @@ def get_latest_dag_execution_date(dag_id):
             logging.warning(f"No successful runs found for DAG {dag_id}")
             return None
 
-DAG_ID = "etl_dimention_data"
+DAG_ID = "ELT_dimention_data"
 MIGRATION_DAG_ID = "migration_fit_data"
 DAG_SCHEDULE = "0 0 1 6,8,12 *"
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"

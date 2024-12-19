@@ -1,0 +1,59 @@
+[2024-12-17T05:55:43.902+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-17T05:55:44.030+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_score_fact_data.aggregate_warehouse.aggregate_score_distribution manual__2024-12-17T05:55:15.736211+00:00 [queued]>
+[2024-12-17T05:55:44.131+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_score_fact_data.aggregate_warehouse.aggregate_score_distribution manual__2024-12-17T05:55:15.736211+00:00 [queued]>
+[2024-12-17T05:55:44.132+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-17T05:55:44.274+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): aggregate_warehouse.aggregate_score_distribution> on 2024-12-17 05:55:15.736211+00:00
+[2024-12-17T05:55:44.378+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=38729) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-17T05:55:44.391+0000] {standard_task_runner.py:63} INFO - Started process 38738 to run task
+[2024-12-17T05:55:44.373+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_score_fact_data', 'aggregate_warehouse.aggregate_score_distribution', 'manual__2024-12-17T05:55:15.736211+00:00', '--job-id', '964', '--raw', '--subdir', 'DAGS_FOLDER/elt_score_fact.py', '--cfg-path', '/tmp/tmpht2cwklf']
+[2024-12-17T05:55:44.397+0000] {standard_task_runner.py:91} INFO - Job 964: Subtask aggregate_warehouse.aggregate_score_distribution
+[2024-12-17T05:55:44.702+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_score_fact_data.aggregate_warehouse.aggregate_score_distribution manual__2024-12-17T05:55:15.736211+00:00 [running]> on host 2f4e9c743994
+[2024-12-17T05:55:45.701+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_score_fact_data' AIRFLOW_CTX_TASK_ID='aggregate_warehouse.aggregate_score_distribution' AIRFLOW_CTX_EXECUTION_DATE='2024-12-17T05:55:15.736211+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-17T05:55:15.736211+00:00'
+[2024-12-17T05:55:45.704+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-17T05:55:45.794+0000] {hive.py:475} INFO - USE `default`
+[2024-12-17T05:55:45.840+0000] {hive.py:475} INFO - CREATE NAMESPACE IF NOT EXISTS iceberg.aggr_warehouse
+[2024-12-17T05:55:45.907+0000] {hive.py:475} INFO - DROP TABLE IF EXISTS iceberg.aggr_warehouse.score_distribution
+[2024-12-17T05:55:46.104+0000] {hive.py:475} INFO - 
+    CREATE OR REPLACE TABLE iceberg.aggr_warehouse.score_distribution
+    USING parquet
+    AS
+    SELECT
+        c.course_id,
+        c.course_name,
+        ps.program_id,
+        ps.semester_name,
+        sf.academic_rank,
+        COUNT(*) AS num_students_with_rank
+    FROM
+        iceberg.warehouse.score_fact sf
+    JOIN iceberg.warehouse.instruction_fact inf 
+        ON sf.instruction_id = inf.instruction_id
+    JOIN iceberg.warehouse.course c 
+        ON inf.course_id = c.course_id
+    JOIN iceberg.warehouse.program_semester ps 
+        ON inf.program_semester_id = ps.program_semester_id
+    GROUP BY
+        c.course_id,
+        c.course_name,
+        ps.program_id,
+        ps.semester_name,
+        sf.academic_rank;
+    
+[2024-12-17T05:55:52.871+0000] {__init__.py:412} INFO - DELETE /user/hive/warehouse/aggr_warehouse.db/score_distribution_parquet recursive=True user.name=default namenode:9870
+[2024-12-17T05:55:52.917+0000] {hive.py:475} INFO - 
+        DROP TABLE IF EXISTS spark_catalog.aggr_warehouse.score_distribution_parquet
+    
+[2024-12-17T05:55:53.994+0000] {hive.py:475} INFO - 
+        CREATE TABLE spark_catalog.aggr_warehouse.score_distribution_parquet
+        USING parquet
+        AS
+        SELECT * FROM iceberg.aggr_warehouse.score_distribution
+    
+[2024-12-17T05:55:56.302+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-17T05:55:56.303+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-17T05:55:56.340+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_score_fact_data, task_id=aggregate_warehouse.aggregate_score_distribution, run_id=manual__2024-12-17T05:55:15.736211+00:00, execution_date=20241217T055515, start_date=20241217T055544, end_date=20241217T055556
+[2024-12-17T05:55:56.413+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-17T05:55:56.489+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-17T05:55:56.497+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

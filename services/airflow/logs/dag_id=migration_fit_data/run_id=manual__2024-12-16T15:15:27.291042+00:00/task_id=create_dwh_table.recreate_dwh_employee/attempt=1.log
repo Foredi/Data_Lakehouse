@@ -1,0 +1,30 @@
+[2024-12-16T15:18:23.104+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-12-16T15:18:23.315+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: migration_fit_data.create_dwh_table.recreate_dwh_employee manual__2024-12-16T15:15:27.291042+00:00 [queued]>
+[2024-12-16T15:18:23.377+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: migration_fit_data.create_dwh_table.recreate_dwh_employee manual__2024-12-16T15:15:27.291042+00:00 [queued]>
+[2024-12-16T15:18:23.378+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-12-16T15:18:23.459+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): create_dwh_table.recreate_dwh_employee> on 2024-12-16 15:15:27.291042+00:00
+[2024-12-16T15:18:23.504+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=26827) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-12-16T15:18:23.517+0000] {standard_task_runner.py:63} INFO - Started process 26877 to run task
+[2024-12-16T15:18:23.518+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'migration_fit_data', 'create_dwh_table.recreate_dwh_employee', 'manual__2024-12-16T15:15:27.291042+00:00', '--job-id', '624', '--raw', '--subdir', 'DAGS_FOLDER/elt_migrate.py', '--cfg-path', '/tmp/tmpqogw534x']
+[2024-12-16T15:18:23.535+0000] {standard_task_runner.py:91} INFO - Job 624: Subtask create_dwh_table.recreate_dwh_employee
+[2024-12-16T15:18:23.594+0000] {task_command.py:426} INFO - Running <TaskInstance: migration_fit_data.create_dwh_table.recreate_dwh_employee manual__2024-12-16T15:15:27.291042+00:00 [running]> on host 2f4e9c743994
+[2024-12-16T15:18:23.773+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='migration_fit_data' AIRFLOW_CTX_TASK_ID='create_dwh_table.recreate_dwh_employee' AIRFLOW_CTX_EXECUTION_DATE='2024-12-16T15:15:27.291042+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-16T15:15:27.291042+00:00'
+[2024-12-16T15:18:23.775+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-12-16T15:18:23.983+0000] {hive.py:475} INFO - USE `default`
+[2024-12-16T15:18:24.092+0000] {hive.py:475} INFO - DROP TABLE IF EXISTS iceberg.warehouse.employee
+[2024-12-16T15:18:25.549+0000] {hive.py:475} INFO - CREATE DATABASE IF NOT EXISTS warehouse
+[2024-12-16T15:18:25.751+0000] {hive.py:475} INFO - 
+        CREATE TABLE IF NOT EXISTS iceberg.warehouse.employee (
+            employee_id BIGINT,employee_name STRING,day_of_birth TIMESTAMP,nationality STRING,insurance_id STRING   
+        )
+        USING iceberg
+        LOCATION '/fit_warehouse/warehouse/employee/*.snappy.parquet'
+    
+[2024-12-16T15:18:29.354+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-12-16T15:18:29.354+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-12-16T15:18:29.542+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=migration_fit_data, task_id=create_dwh_table.recreate_dwh_employee, run_id=manual__2024-12-16T15:15:27.291042+00:00, execution_date=20241216T151527, start_date=20241216T151823, end_date=20241216T151829
+[2024-12-16T15:18:29.992+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-12-16T15:18:30.671+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-16T15:18:30.679+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
