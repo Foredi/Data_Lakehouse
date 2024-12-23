@@ -1,4 +1,5 @@
 # Data lakehouse
+![stack architecture](architecture.png)
 
 ### Hướng dẫn chạy sẽ được cập nhật sau
 
